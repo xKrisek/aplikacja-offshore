@@ -30,10 +30,15 @@ header a, header a:active, header a:visited {
   color: black;
 }
 
+a img{
+  height: 40px;
+  clear: both;
+}
+
 header a{
- line-height: 80px;
- margin: 10px 5%;
+ margin: 20px 5%;
  font-weight: bold;
+ text-align: center;
 }
 
 header h1{

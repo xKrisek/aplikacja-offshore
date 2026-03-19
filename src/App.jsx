@@ -3,6 +3,7 @@ import { Routes, Link, Route } from 'react-router'
 import './App.css'
 import Narzedzie from './components/Narzedzie'
 import BazaWiedzy from './components/BazaWiedzy'
+import knowledgeBase from './assets/knowledgeBase.json'
 
 function App() {
 
@@ -13,18 +14,19 @@ function App() {
         <nav>
           <Link to="/aplikacja-offshore/">
             <div>
-              <img src="./assets/Strona_glowna.png" alt="" />
+              <img src="./src/assets/homepage.png" /><br/>
               Strona główna
             </div>
           </Link>
           <Link to="/aplikacja-offshore/baza-wiedzy">
             <div>
-              <img src='./src/assets/Baza_wiedzy.png' alt="coś się wykrzaczyło :("/>
+              <img src='./src/assets/baza-wiedzy.png'/><br/>
               Baza wiedzy
             </div>
           </Link>
           <Link to="/aplikacja-offshore/narzedzie">
             <div>
+               <img src="./src/assets/ocena-stanu-tech.png"/><br/>
               Narzędzie
             </div>
           </Link>
