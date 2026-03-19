@@ -1,27 +1,48 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Link, Route } from 'react-router'
+import { Routes, Link, Route } from 'react-router'
 import './App.css'
+import Narzedzie from './components/Narzedzie'
+import BazaWiedzy from './components/BazaWiedzy'
 
 function App() {
 
   return (
-    <BrowserRouter>
-    <header>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/baza-wiedzy">About</Link>
-        <Link to="/narzedzie">Contact</Link>
-      </nav>
-    </header>
-    <main>
-      <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/baza-wiedzy" element={<bazaWiedzy />} />
-        <Route path="/narzedzie" element={<Narzedzie />} />
-      </Routes>
-    </main>
-
-    </BrowserRouter>
+    <>
+      <header>
+        <h1>Off-Shore Application Name</h1>
+        <nav>
+          <Link to="/aplikacja-offshore/">
+            <div>
+              <img src="./assets/Strona_glowna.png" alt="" />
+              Strona główna
+            </div>
+          </Link>
+          <Link to="/aplikacja-offshore/baza-wiedzy">
+            <div>
+              <img src='./src/assets/Baza_wiedzy.png' alt="coś się wykrzaczyło :("/>
+              Baza wiedzy
+            </div>
+          </Link>
+          <Link to="/aplikacja-offshore/narzedzie">
+            <div>
+              Narzędzie
+            </div>
+          </Link>
+        </nav>
+        <select>
+          <option value="jezyk">Język</option>
+          <option value="pl">Polski</option>
+          <option value="...">...</option>
+        </select>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/aplikacja-offshore/" element={<h1>Strona główna</h1>} />
+          <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy />} />
+          <Route path="/aplikacja-offshore/narzedzie" element={<Narzedzie />} />
+        </Routes>
+      </main>
+    </>
   )
 }
 

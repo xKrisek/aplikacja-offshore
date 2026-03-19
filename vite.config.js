@@ -5,4 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/aplikacja-offshore/',
+  server: {
+    host: true,
+    port: 2137,
+    strictPort: true,
+  }
 })

@@ -1,0 +1,45 @@
+body {
+  background-color: rgb(255, 167, 16);
+  --header-height: 100px;
+}
+
+header {
+  background-color: aqua;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+}
+
+main {
+  margin-top: var(--header-height);
+  background-color: beige;
+  overflow: auto;
+}
+
+h1, p {
+  margin: 0;
+}
+
+header a, header p, header h1{
+  float: left;
+}
+
+header a, header a:active, header a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+header a{
+ line-height: 80px;
+ margin: 10px 5%;
+ font-weight: bold;
+}
+
+header h1{
+  width: 40%;
+  text-align: center;
+  height: 80%;
+  margin-top: 10px;
+  line-height: 80px;
+}
