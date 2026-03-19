@@ -1,0 +1,18 @@
+
+[
+    {
+    "id": 1,
+    "title": "What is offshore software development?",
+    "content": "Offshore software development refers to the practice of outsourcing software development tasks to a company or team located in a different country, often with lower labor costs. This allows businesses to access a larger talent pool and reduce expenses while still maintaining quality."
+    },
+    {
+    "id": 2,
+    "title": "What are the benefits of offshore software development?",
+    "content": "The benefits of offshore software development include cost savings, access to a global talent pool, faster time-to-market, and the ability to focus on core business activities while the offshore team handles software development tasks."
+    },
+    {
+    "id": 3,
+    "title": "What are the challenges of offshore software development?",
+    "content": "Challenges of offshore software development can include communication barriers, time zone differences, cultural differences, and potential issues with quality control. However, these challenges can be mitigated with proper planning and management."
+    }
+]
