@@ -1,5 +1,15 @@
 #baza-wiedzy-button {
-    margin: 20px 20px 20px 50px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 250px;
+    height: 70px;
+    cursor: pointer;
+}
+
+#baza-wiedzy-button_selected {
+    margin: 10px;
     padding: 10px;
     font-size: 16px;
     border-radius: 10px;
@@ -9,11 +19,17 @@
     cursor: pointer;
 }
 
+
 #baza-wiedzy-buttons{
     display: flex;
-    flex-wrap: wrap;
 }
 
 #baza-wiedzy-title {
     margin: 20px 50px;
+}
+
+#baza-wiedzy-tresc {
+    margin: 20px 50px;
+    width: 50%;
+    line-height: 2em;
 }
