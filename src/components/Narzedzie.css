@@ -19,3 +19,28 @@
     background-color: rgb(150, 150, 150);
     font-weight: bold;
 }
+
+#go_back {
+    margin: 20px 50px;
+    font-size: 18px;
+    width: 1%;
+    background-color: transparent;
+    border: none;
+}
+
+#div_narzedzie {
+    margin: 20px 50px;
+    font-size: 18px;
+    width: 50%;
+    text-align: center;
+}
+
+#narzedzie_button_yellow {
+    background-color: rgb(255, 173, 0);
+    font-weight: bold;
+}
+
+#narzedzie_button_blue {
+    background-color: rgb(120, 175, 189);
+    font-weight: bold;
+}
