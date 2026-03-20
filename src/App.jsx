@@ -10,23 +10,24 @@ function App() {
   return (
     <>
       <header>
-        <h1>Off-Shore Application Name</h1>
+        <img src="./src/assets/logo.svg" alt="Logo" id='logo'/>
+        <h1>OFF-SHORE SAFETY</h1>
         <nav>
           <Link to="/aplikacja-offshore/">
             <div>
-              <img src="./src/assets/homepage.png" /><br/>
+              <img src="./src/assets/homepage.svg" /><br/>
               Strona główna
             </div>
           </Link>
           <Link to="/aplikacja-offshore/baza-wiedzy">
             <div>
-              <img src='./src/assets/baza-wiedzy.png'/><br/>
+              <img src='./src/assets/baza-wiedzy.svg'/><br/>
               Baza wiedzy
             </div>
           </Link>
           <Link to="/aplikacja-offshore/narzedzie">
             <div>
-               <img src="./src/assets/ocena-stanu-tech.png"/><br/>
+               <img src="./src/assets/ocena-stanu-tech.svg"/><br/>
               Narzędzie
             </div>
           </Link>
@@ -39,7 +40,13 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/aplikacja-offshore/" element={<h1>Strona główna</h1>} />
+          <Route path="/aplikacja-offshore/" element={
+            <>
+              <div id='main-site-desc'>
+                <h2><strong>Narzędzie wspierające decyzyjność</strong> w zakresie doboru i oceny stanu technicznego ŚOI stosowanych w obszarze off-shore i innych outdoorowych.</h2>
+              </div>
+            </>
+          } />
           <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy />} />
           <Route path="/aplikacja-offshore/narzedzie" element={<Narzedzie />} />
         </Routes>

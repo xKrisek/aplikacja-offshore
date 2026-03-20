@@ -1,0 +1,19 @@
+button {
+    margin: 20px 20px 20px 50px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 250px;
+    height: 70px;
+    background-color: rgb(255, 236, 197);
+    cursor: pointer;
+}
+
+#baza-wiedzy-buttons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#baza-wiedzy-title {
+    margin: 20px 50px;
+}
