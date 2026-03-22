@@ -1,8 +1,8 @@
 body{
   margin: 0; 
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 *{
   transition: all 0.15s ease-in-out;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

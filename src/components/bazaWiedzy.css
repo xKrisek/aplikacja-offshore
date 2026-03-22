@@ -1,27 +1,40 @@
-#baza-wiedzy-button {
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    width: 250px;
-    height: 70px;
-    cursor: pointer;
+#baza-wiedzy-buttons{
+    width: 30%;
+    float: right;
+    height: calc(100% + 4rem);
+    border-radius: 0 2rem 2rem 0;
+    margin-right: -2rem;
+    margin-top: -2rem;
+    background-color: #ddd;
 }
 
-#baza-wiedzy-button_selected {
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-    width: 250px;
-    height: 70px;
+#baza-wiedzy-buttons h2{
+    text-align: center;
+    font-size: 200%;
+}
+
+.knowledge-base-button{
+    width: 100%;
+    height: 3rem;
+    clear: both;
+    margin: 0;
+    border: 0;
+    background-color: #ddd;
+}
+
+.knowledge-base-button:hover{
+    scale: 105%;
+    margin-left: -5%;
+    font-weight: bold;
+}
+
+#button-selected {
     background-color: rgb(255, 236, 197);
     cursor: pointer;
-}
-
-
-#baza-wiedzy-buttons{
-    display: flex;
+    scale: 110%;
+    margin-left: -5%;
+    z-index: 1;
+    font-weight: bold;
 }
 
 #baza-wiedzy-title {

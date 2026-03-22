@@ -1,8 +1,10 @@
 body {
   --header-height: 100px;
   background-image: url('./assets/background2.svg');
-  background-size: 100%;
-  background-position: 0 -350px;
+  background-size: 1920px;
+  background-attachment: fixed;
+  background-position: calc(1920px + 100vw) -350px;
+  transition: none;
 }
 
 header {
@@ -12,6 +14,13 @@ header {
   height: var(--header-height);
   background-color: lightgray;
   box-shadow: 0 0 20px #000000aa;
+}
+
+nav{
+  height: 100px;
+  width: 60%;
+  margin: auto;
+  float: left;
 }
 
 main {
@@ -41,30 +50,45 @@ header a, header a:active, header a:visited {
   color: black;
 }
 
-a img{
-  height: 50px;
-  padding: 25px 20px;
+img{
+  height: 60px;
+  padding: 10px 20px;
   float: left;
 }
 
+#language-container{
+  margin-top: 10px;
+  margin-left: 1rem;
+  line-height: 80px;
+}
+
+#language-container select{
+  font-size: 1.2rem;
+  background-color: #eee;
+  border: 0;
+  border-radius: 1rem;
+  padding: 10px;
+}
+
 header a{
- margin: 0 2%;
+ margin: 10px 2%;
  font-weight: bold;
   background-color: lightgray;
  text-align: center;
  border-radius: 2rem;
 }
 
-header a:hover{
+header a:hover, .selected-location{
   scale: 115%;
   box-shadow: 0 0 10px gray;
 }
 
 a p{
-  line-height: 100px;
+  line-height: 60px;
   float: left;
-  margin-left: 20px;
+  margin: 10px 0;
   padding: 0 10px;
+  font-size: 1.4rem;
 }
 
 header h1{
@@ -76,7 +100,8 @@ header h1{
   line-height: 80px;
   letter-spacing: 0.7rem;
   line-height: 2.5rem;
-  color: black;
+  color: white;
+  text-shadow: -4px 4px black;
 }
 
 #logo{

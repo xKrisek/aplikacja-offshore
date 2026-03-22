@@ -10,14 +10,16 @@ function BazaWiedzy() {
 
     return(
         <div className='knowledge-base'>
-            <h1 id='baza-wiedzy-title'>Baza wiedzy</h1>
             <div id='baza-wiedzy-buttons'>
+                <h2>Spis treści</h2>
+                <hr/>
                 {topics.map((topic) => {
                     return(
-                        <button id={selectedTopic === topic ? 'baza-wiedzy-button_selected' : 'baza-wiedzy-button'} onClick={() => setSelectedTopic(topic)}>{topic}</button>
+                        <><button className='knowledge-base-button' id={selectedTopic === topic ? 'button-selected' : ''} onClick={() => setSelectedTopic(topic)}>{topic}</button><br/></>
                     )
                 })}
             </div>
+            <h2 id='baza-wiedzy-title'>Baza wiedzy</h2>
             <div id='baza-wiedzy-tresc'>
                 {selectedTopic === 'WSTĘP' && <div>Witamy w naszej bazie wiedzy, stworzonej z myślą o wszystkich zainteresowanych tematyką bezpieczeństwa w środowisku off-shore i outdoorowym. Naszym celem jest dostarczenie rzetelnych informacji, które pomogą zrozumieć, jak ważne jest odpowiednie dobieranie i ocenianie stanu technicznego ŚOI (Środków Ochrony Indywidualnej) stosowanych w tych wymagających warunkach.</div>}
             </div>
