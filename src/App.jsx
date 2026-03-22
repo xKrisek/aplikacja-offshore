@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Routes, Link, Route } from 'react-router'
 import './App.css'
 import Narzedzie from './components/Narzedzie'
-import BazaWiedzy from './components/BazaWiedzy'
+import BazaWiedzy from './components/bazaWiedzy'
 import knowledgeBase from './assets/knowledgeBase.json'
 
 function App() {
@@ -10,25 +10,24 @@ function App() {
   return (
     <>
       <header>
-        <img src="./src/assets/logo.svg" alt="Logo" id='logo'/>
         <h1>OFF-SHORE SAFETY</h1>
         <nav>
           <Link to="/aplikacja-offshore/">
             <div>
-              <img src="./src/assets/homepage.svg" /><br/>
-              Strona główna
+              <img src="./src/assets/homepage.svg" />
+              <p>Strona główna</p>
             </div>
           </Link>
           <Link to="/aplikacja-offshore/baza-wiedzy">
             <div>
-              <img src='./src/assets/baza-wiedzy.svg'/><br/>
-              Baza wiedzy
+              <img src='./src/assets/baza-wiedzy.svg'/>
+              <p>Baza wiedzy</p>
             </div>
           </Link>
           <Link to="/aplikacja-offshore/narzedzie">
             <div>
-               <img src="./src/assets/ocena-stanu-tech.svg"/><br/>
-              Narzędzie
+               <img src="./src/assets/ocena-stanu-tech.svg"/> 
+              <p>Narzędzie</p>
             </div>
           </Link>
         </nav>

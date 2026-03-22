@@ -6,7 +6,7 @@ function Narzedzie() {
     const [obiekt, setObiekt] = useState(''); 
 
     return(
-        <>
+        <div className='knowledge-base'>
             <h1 id="narzedzie-title">Ocena stanu technicznego</h1>
             {obiekt === '' &&
                 <div>
@@ -32,7 +32,7 @@ function Narzedzie() {
             }
             {obiekt === 'ob_wl' && <div id='ob_wl_desc'>Obiekty włókiennicze / tekstylne</div>}
             {obiekt === 'ob_met' && <div id='ob_met_desc'>Obiekty metalowe</div>}
-        </> 
+        </div> 
     )
 }
 

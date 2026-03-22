@@ -9,7 +9,7 @@ function BazaWiedzy() {
 
 
     return(
-        <>
+        <div className='knowledge-base'>
             <h1 id='baza-wiedzy-title'>Baza wiedzy</h1>
             <div id='baza-wiedzy-buttons'>
                 {topics.map((topic) => {
@@ -21,7 +21,7 @@ function BazaWiedzy() {
             <div id='baza-wiedzy-tresc'>
                 {selectedTopic === 'WSTĘP' && <div>Witamy w naszej bazie wiedzy, stworzonej z myślą o wszystkich zainteresowanych tematyką bezpieczeństwa w środowisku off-shore i outdoorowym. Naszym celem jest dostarczenie rzetelnych informacji, które pomogą zrozumieć, jak ważne jest odpowiednie dobieranie i ocenianie stanu technicznego ŚOI (Środków Ochrony Indywidualnej) stosowanych w tych wymagających warunkach.</div>}
             </div>
-        </>        
+        </div>        
     )
 }
 
