@@ -22,6 +22,8 @@ function App() {
     {value: 'DE', label: 'Deutsch', icon: germanyFlag},
   ];
 
+  document.getElementById('root')
+
   const [showLang, setShowLang] = useState(false);
 
   const { Option } = components;
@@ -49,7 +51,7 @@ function App() {
   }, [showLang]);
 
   return (
-    <>
+    <div className="bg-dark">
       <header>
         <h1>OFF-SHORE SAFETY</h1>
         <nav>
@@ -169,7 +171,7 @@ function App() {
           <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie />} />
         </Routes>
       </main>
-    </>
+    </div>
   )
 }
 

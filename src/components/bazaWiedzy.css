@@ -1,11 +1,12 @@
 #baza-wiedzy-spis{
     width: 35%;
     float: right;
-    height: calc(100% + 3rem);
-    border-radius: 0 2rem 2rem 0;
-    margin-right: -1rem;
-    margin-top: -1rem;
+    height: calc(100% + 2rem);
+    border-radius: 0 2rem 0rem 0;
+    margin: -1rem -1rem -1rem 0;
     background-color: #ddd;
+    position: sticky;
+    top: -1rem;
 }
 
 #baza-wiedzy-buttons::-webkit-scrollbar{
@@ -58,7 +59,7 @@
     margin: 5vh auto;
     box-shadow: 0 0 20px gray;
     border-radius: 2rem;
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 1rem;
     height: 85%;
     overflow-y: auto;
 }

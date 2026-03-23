@@ -1,11 +1,20 @@
 body {
   --header-height: 11%;
+}
+
+.bg{
+  width: 100%;
+  height: 100%;
   background-image: url('./assets/background2.svg');
   background-size: 1920px;
   background-attachment: fixed;
   background-position: right 90%;
   transition: none;
   background-repeat: no-repeat;
+}
+
+.bg-dark{
+  background-image: url('./assets/background2dark.svg') !important;
 }
 
 header {
@@ -22,7 +31,6 @@ header {
 nav{
   height: 100%;
   width: 50%;
-  margin: 0;
   float: left;
 }
 
@@ -52,8 +60,8 @@ header a, header a:active, header a:visited {
 }
 
 nav img{
-  height: 40px;
-  padding: 10px 20px;
+  height: 30px;
+  padding: 10px 10px;
   float: left;
 }
 
@@ -104,9 +112,9 @@ nav img{
   float: left;
 }
 
-header a{
- margin: 10px 3%;
- font-weight: bold;
+nav a{
+ width: 22.5%;
+ margin: 15px 5%;
  background-color: lightgray;
  text-align: center;
  border-radius: 1rem;
@@ -119,18 +127,18 @@ header a:hover, .selected-location{
 
 .selected-location{
   background-color: #ddd;
+  font-weight: bold;
 }
 
 header a p{
-  line-height: 40px;
+  line-height: 30px;
   float: left;
   margin: 10px 0;
-  padding: 0 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 header h1{
-  width: 24%;
+  width: 25%;
   height: 80%;
   margin-top: 0;
   font-size: 225%;

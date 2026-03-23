@@ -4,17 +4,8 @@ import { useState } from 'react';
 
 function Narzedzie() {
 
-    const [link, setLink] = useState("");
     const color_unchecked = 'white';
     const color_checked = '#78afbd';
-
-    function handleClick() {
-        var link2 = window.location.href;
-        console.log(link2)
-        setLink(link2.split('/')[link2.length - 1]);
-    }
-
-    console.log(link);
 
     return(
         <>
@@ -36,6 +27,7 @@ function Narzedzie() {
 
                     </div>
                 } />
+
                 <Route path="obiekty-z-polimerow-stalych/" element={
                     <div className='narzedzie_container'>
                     <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych</h2>
@@ -53,12 +45,14 @@ function Narzedzie() {
                     </NavLink>
                     </div>
                 } />
+
                 <Route path="obiekty-wlokiennicze-tekstylne/" element={
                     <div className='narzedzie_container'>
                     <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty włókiennicze / tekstylne</h2>
                     <p>Treść dla obiektów włókienniczych / tekstylnych</p>
                     </div>
                 } />
+                
                 <Route path="obiekty-metalowe/" element={
                     <div className='narzedzie_container'>
                     <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty metalowe</h2>
@@ -69,13 +63,13 @@ function Narzedzie() {
                 <Route path="obiekty-z-polimerow-stalych/helmy-ochronne/" element={
                     <div className='narzedzie_ocena'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne</h2>
-                        <NavLink to='ocena-stanu-skorupy'>
+                        <NavLink to='ocena-stanu-skorupy/'>
                             <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu skorupy</button><br/>
                         </NavLink>
-                        <NavLink to='ocena-stanu-wiezby-i-zaczepow'>
+                        <NavLink to='ocena-stanu-wiezby-i-zaczepow/'>
                             <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu więźby i zaczepów</button><br/>
                         </NavLink>
-                        <NavLink to='ocena-stanu-paska-podbrodkowego'>
+                        <NavLink to='ocena-stanu-paska-podbrodkowego/'>
                             <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu paska podbródkowego</button>
                         </NavLink>
                         <div id="sprawdz_stan" style={{float: 'right'}}>
@@ -88,7 +82,95 @@ function Narzedzie() {
                 {/* Tekstylia */}
                 {/* Metale */}
 
-                <Route path='ocena-stanu-skorupy' />
+                <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-skorupy/' element={
+                    <div className='narzedzie_ocena'>
+                        <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu skorupy</h2>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="check" id="check" />
+                                        </td>
+                                        <td>
+                                            <p>Odkształcenia</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="check" id="check" />
+                                        </td>
+                                        <td>
+                                            <p>Zmiany koloru</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="check" id="check" />
+                                        </td>
+                                        <td>
+                                            <p>Pęknięcia</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="check" id="check" />
+                                        </td>
+                                        <td>
+                                            <p>Głębokie otarcia</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="check" id="check" />
+                                        </td>
+                                        <td>
+                                            <p>Odpryski</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="check" id="check" />
+                                        </td>
+                                        <td>
+                                            <p>Wyszczerbienia</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                } />
             </Routes>
         </>
     )
