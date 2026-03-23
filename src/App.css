@@ -105,7 +105,7 @@ nav img{
   background-color: #ddd;
   height: 70px;
   width: 90px;
-  border-radius: 1rem;
+  border-radius: 0 1rem 0 1rem;
   margin-top: 5px;
   float: right;
   margin-right: 20px;
@@ -129,7 +129,7 @@ nav a{
  margin: 15px 5%;
  background-color: lightgray;
  text-align: center;
- border-radius: 1rem;
+ border-radius: 0 1rem 0 1rem;
 }
 
 header a:hover, .selected-location{
@@ -170,7 +170,7 @@ button {
   margin: 20px 20px 20px 20px;
   padding: 10px;
   font-size: 16px;
-  border-radius: 10px;
+  border-radius: 0 1rem 0 1rem;
   width: 250px;
   height: 70px;
   cursor: pointer;
@@ -181,3 +181,14 @@ button {
   .knowledge-base { width: 90%; }
   #main-site-desc { width: 80%; }
 }
+
+/* @media (min-width: 1800px) {
+  body{
+    zoom: 1.25;
+  }
+  main div {
+    width: 40%; 
+    max-width: 800px; 
+    max-height: 550px;
+  }
+} */

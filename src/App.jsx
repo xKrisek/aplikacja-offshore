@@ -102,7 +102,7 @@ function App() {
             styles={{
               control: (base) => ({
                 ...base,
-                borderRadius: '10px',
+                borderRadius: '1rem 0 0 1rem',
                 borderColor: '#000',
                 backgroundColor: '#eee',
                 height: '40px',
