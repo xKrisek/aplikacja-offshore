@@ -51,7 +51,7 @@ function App() {
   }, [showLang]);
 
   return (
-    <div className="bg-dark">
+    <div className="bg">
       <header>
         <h1>OFF-SHORE SAFETY</h1>
         <nav>

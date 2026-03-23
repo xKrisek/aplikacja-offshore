@@ -86,88 +86,10 @@ function Narzedzie() {
                     <div className='narzedzie_ocena'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu skorupy</h2>
                         <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="check" id="check" />
-                                        </td>
-                                        <td>
-                                            <p>Odkształcenia</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <label htmlFor="check"><input type="checkbox" name="check" id="check1" />Odkształcenia</label>
                         </div>
                         <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="check" id="check" />
-                                        </td>
-                                        <td>
-                                            <p>Zmiany koloru</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="check" id="check" />
-                                        </td>
-                                        <td>
-                                            <p>Pęknięcia</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="check" id="check" />
-                                        </td>
-                                        <td>
-                                            <p>Głębokie otarcia</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="check" id="check" />
-                                        </td>
-                                        <td>
-                                            <p>Odpryski</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input type="checkbox" name="check" id="check" />
-                                        </td>
-                                        <td>
-                                            <p>Wyszczerbienia</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <label htmlFor="check"><input type="checkbox" name="check" id="check1" />Zmiany koloru</label>
                         </div>
                     </div>
                 } />
