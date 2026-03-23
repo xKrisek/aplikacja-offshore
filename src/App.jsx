@@ -1,10 +1,17 @@
 import { Routes, Route, NavLink } from 'react-router'
+import { Select } from 'react-select'
 import './App.css'
 import Narzedzie from './components/Narzedzie'
 import BazaWiedzy from './components/bazaWiedzy'
+import PolimeryStale from './components/polimeryStale'
 import knowledgeBase from './assets/knowledgeBase.json'
 
 function App() {
+
+  const optons = [
+    {value: 'Poland', label: './assets/'},
+    {value: 'England', label: 'E'}
+  ]
 
   return (
     <>
@@ -62,6 +69,7 @@ function App() {
           } />
           <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy />} />
           <Route path="/aplikacja-offshore/narzedzie" element={<Narzedzie />} />
+          <Route path="/aplikacja-offshore/narzedzie/obiekty-z-polimerow-stalych/" element={<PolimeryStale />} />
         </Routes>
       </main>
     </>

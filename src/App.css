@@ -1,9 +1,9 @@
 body {
-  --header-height: 100px;
+  --header-height: 11%;
   background-image: url('./assets/background2.svg');
   background-size: 1920px;
   background-attachment: fixed;
-  background-position: calc(1920px + 100vw) -350px;
+  background-position: calc(1920px + 100vw) 90%;
   transition: none;
 }
 
@@ -17,17 +17,17 @@ header {
 }
 
 nav{
-  height: 100px;
-  width: 60%;
+  height: 100%;
+  width: 55%;
   margin: auto;
   float: left;
 }
 
 main {
-  margin-top: var(--header-height);
+  margin-top: 5vh;
   overflow: auto;
-  padding: 50px;
-  height: calc(100vh - 200px);
+  padding: 30px;
+  height: 80vh;
   overflow: hidden;
 }
 
@@ -51,15 +51,22 @@ header a, header a:active, header a:visited {
 }
 
 img{
-  height: 60px;
+  height: 40px;
   padding: 10px 20px;
   float: left;
 }
 
 #language-container{
-  margin-top: 10px;
+  margin-top: 1%;
   margin-left: 1rem;
-  line-height: 80px;
+  line-height: 60px;
+  width: 20%;
+  float: left;
+  text-align: right;
+}
+
+#language-container img{
+  float: right;
 }
 
 #language-container select{
@@ -71,11 +78,11 @@ img{
 }
 
 header a{
- margin: 10px 2%;
+ margin: 10px 3%;
  font-weight: bold;
-  background-color: lightgray;
+ background-color: lightgray;
  text-align: center;
- border-radius: 2rem;
+ border-radius: 1rem;
 }
 
 header a:hover, .selected-location{
@@ -84,22 +91,21 @@ header a:hover, .selected-location{
 }
 
 a p{
-  line-height: 60px;
+  line-height: 40px;
   float: left;
   margin: 10px 0;
   padding: 0 10px;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 header h1{
-  width: 25%;
+  width: 20%;
   height: 80%;
-  margin-top: 8px;
+  margin-top: 0;
   margin-left: 10px;
-  font-size: 300%;
-  line-height: 80px;
-  letter-spacing: 0.7rem;
-  line-height: 2.5rem;
+  font-size: 225%;
+  line-height: 2.25rem;
+  letter-spacing: 0.5rem;
   color: white;
   text-shadow: -4px 4px black;
 }
