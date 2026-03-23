@@ -86,10 +86,13 @@ function Narzedzie() {
                     <div className='narzedzie_ocena'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu skorupy</h2>
                         <div>
-                            <label htmlFor="check"><input type="checkbox" name="check" id="check1" />Odkształcenia</label>
+                            <input type="checkbox" name="check" id="check1" /><button>Odkształcenia</button>
                         </div>
                         <div>
-                            <label htmlFor="check"><input type="checkbox" name="check" id="check1" />Zmiany koloru</label>
+                            <input type="checkbox" name="check" id="check1" /><button>Zmiany koloru</button>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="check" id="check1" /><button>Zmiany koloru</button>
                         </div>
                     </div>
                 } />

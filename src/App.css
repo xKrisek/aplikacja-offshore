@@ -8,12 +8,25 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url('./assets/background2dark.svg');
   background-size: 1920px;
+  background-image: url('./assets/background2.svg');
   background-attachment: fixed;
   background-position: right 90%;
   transition: none;
   background-repeat: no-repeat;
+}
+
+/* .bg-dark{
+  background-image: url('./assets/bg-dark-2.svg') !important;
+  color: white;
+} */
+
+.text-w{
+  color: white !important;
+}
+
+.bg-b{
+  background-color: black !important;
 }
 
 header {

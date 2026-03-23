@@ -25,6 +25,7 @@ function App() {
   document.getElementById('root')
 
   const [showLang, setShowLang] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(true);
 
   const { Option } = components;
   const IconOption = (props) => (
@@ -51,7 +52,7 @@ function App() {
   }, [showLang]);
 
   return (
-    <div className="bg">
+    <div className={darkTheme ? "bg-dark bg" : "bg"}>
       <header>
         <h1>OFF-SHORE SAFETY</h1>
         <nav>
