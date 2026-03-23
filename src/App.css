@@ -3,31 +3,32 @@ body {
   background-image: url('./assets/background2.svg');
   background-size: 1920px;
   background-attachment: fixed;
-  background-position: calc(1920px + 100vw) 90%;
+  background-position: right 90%;
   transition: none;
+  background-repeat: no-repeat;
 }
 
 header {
   position: fixed;
+  z-index: 1000;
   top: 0;
   width: 100%;
   height: var(--header-height);
   background-color: lightgray;
   box-shadow: 0 0 20px #000000aa;
+  padding: 0 10px;
 }
 
 nav{
   height: 100%;
-  width: 55%;
-  margin: auto;
+  width: 50%;
+  margin: 0;
   float: left;
 }
 
 main {
-  margin-top: 5vh;
-  overflow: auto;
-  padding: 30px;
-  height: 80vh;
+  margin-top: 10vh;
+  height: 90vh;
   overflow: hidden;
 }
 
@@ -50,31 +51,57 @@ header a, header a:active, header a:visited {
   color: black;
 }
 
-img{
+nav img{
   height: 40px;
   padding: 10px 20px;
   float: left;
 }
 
 #language-container{
-  margin-top: 1%;
-  margin-left: 1rem;
   line-height: 60px;
-  width: 20%;
-  float: left;
+  height: 100%;
+  width: 25%;
+  float: right;
   text-align: right;
 }
 
-#language-container img{
-  float: right;
+.hidden{
+  opacity: 0;
+  transform: translateX(350px) translateY(40px) scale(0);
 }
 
-#language-container select{
-  font-size: 1.2rem;
-  background-color: #eee;
-  border: 0;
+.rotate{
+  transform: scale(-1, 1);
+}
+
+.lang-button img{
+  float: right;
+  height: 50px;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.lang-button{
+  background-color: #ddd;
+  height: 70px;
+  width: 90px;
   border-radius: 1rem;
-  padding: 10px;
+  margin-top: 5px;
+  float: right;
+  margin-right: 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+.lang-button:hover{
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
+}
+
+.lang-button svg{
+  height: 70px;
+  margin: 0;
+  float: left;
 }
 
 header a{
@@ -90,7 +117,11 @@ header a:hover, .selected-location{
   box-shadow: 0 0 10px gray;
 }
 
-a p{
+.selected-location{
+  background-color: #ddd;
+}
+
+header a p{
   line-height: 40px;
   float: left;
   margin: 10px 0;
@@ -99,10 +130,9 @@ a p{
 }
 
 header h1{
-  width: 20%;
+  width: 24%;
   height: 80%;
   margin-top: 0;
-  margin-left: 10px;
   font-size: 225%;
   line-height: 2.25rem;
   letter-spacing: 0.5rem;
@@ -117,11 +147,17 @@ header h1{
 }
 
 button {
-  margin: 20px 20px 20px 50px;
+  margin: 20px 20px 20px 20px;
   padding: 10px;
   font-size: 16px;
   border-radius: 10px;
   width: 250px;
   height: 70px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav { width: 100%; }
+  .knowledge-base { width: 90%; }
+  #main-site-desc { width: 80%; }
 }

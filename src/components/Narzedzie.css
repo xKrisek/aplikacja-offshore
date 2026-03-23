@@ -2,45 +2,61 @@
     margin: 20px 50px;
 }
 
-#ob_pol {
-    /* background-color: rgb(219, 233, 237); */
-    background-color: rgb(120, 175, 189);
-    font-weight: bold;
-}
-
-#ob_wl {
-    /* background-color: rgb(255, 236, 197); */
-    background-color: rgb(255, 173, 0);
-    font-weight: bold;
-}
-
-#ob_met {
-    /* background-color: rgb(115, 115, 115); */
-    background-color: rgb(150, 150, 150);
-    font-weight: bold;
-}
-
-#go_back {
-    margin: 20px 50px;
-    font-size: 18px;
-    width: 1%;
-    background-color: transparent;
-    border: none;
-}
-
-#div_narzedzie {
-    margin: 20px 50px;
-    font-size: 18px;
-    width: 50%;
-    text-align: center;
-}
-
 #narzedzie_button_yellow {
-    background-color: rgb(255, 173, 0);
+    background-color: #ffb700;
     font-weight: bold;
 }
 
 #narzedzie_button_blue {
-    background-color: rgb(120, 175, 189);
+    background-color: #78afbd;
+    font-weight: bold;
+}
+
+#narzedzie_button_gray {
+    background-color: #969696;
+    font-weight: bold;
+}
+
+.narzedzie_container {
+    background-color: white;
+    width: 60%;
+    margin: 5vh auto;
+    box-shadow: 0 0 20px gray;
+    border-radius: 2rem;
+    padding: 1rem 1rem 2rem 1rem;
+    height: 85%;
+    text-align: center;
+    align-content: center;
+}
+
+.narzedzie_ocena {
+    background-color: white;
+    width: 60%;
+    margin: 5vh auto;
+    box-shadow: 0 0 20px gray;
+    border-radius: 2rem;
+    padding: 1rem 1rem 2rem 1rem;
+    height: 85%;
+    text-align: center;
+    align-content: center;
+}
+
+
+#sprawdz_stan {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 3%;
+}
+
+#check_condition_p {
+    width: 25%;
+    color: #78afbd;
+}
+
+#check_condition_button {
+    background-color: #78afbd;
+    color: white;
+    border: 0px;
     font-weight: bold;
 }

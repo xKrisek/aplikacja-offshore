@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import './bazaWiedzy.css'
 
-function BazaWiedzy() {
-    
-    const topics = ['WSTĘP', 'DLACZEGO TE JEST WAŻNE', 'CZYNNIKI STARZENIOWE', 'SŁOWNICZEK', 'KTO SKORZYSTA Z TEJ WIEDZY?', 'ZAWODY OFFSHORE I OUTDOOR', 'DOBÓR ŚOI']
 
-    const [selectedTopic, setSelectedTopic] = useState('WSTĘP')
+function BazaWiedzy(props) {
+    
+    const topics = props.baza.map(item => item.title);
+
+    const [selectedTopic, setSelectedTopic] = useState(topics[0] || 'WSTĘP')
 
 
     return(
         <div className='knowledge-base'>
-            <div id='baza-wiedzy-buttons'>
+            <div id='baza-wiedzy-spis'>
                 <h2>Spis treści</h2>
                 <hr/>
                 {topics.map((topic) => {
@@ -21,7 +22,10 @@ function BazaWiedzy() {
             </div>
             <h2 id='baza-wiedzy-title'>Baza wiedzy</h2>
             <div id='baza-wiedzy-tresc'>
-                {selectedTopic === 'WSTĘP' && <div>Witamy w naszej bazie wiedzy, stworzonej z myślą o wszystkich zainteresowanych tematyką bezpieczeństwa w środowisku off-shore i outdoorowym. Naszym celem jest dostarczenie rzetelnych informacji, które pomogą zrozumieć, jak ważne jest odpowiednie dobieranie i ocenianie stanu technicznego ŚOI (Środków Ochrony Indywidualnej) stosowanych w tych wymagających warunkach.</div>}
+                {(() => {
+                    const selectedItem = props.baza.find(item => item.title === selectedTopic);                    
+                    return selectedItem ? <div>{selectedItem.content.split('/n').map(line => <p>{line}</p>)}</div> : <div>Brak treści dla wybranego tematu.</div>;
+                })()}
             </div>
         </div>        
     )

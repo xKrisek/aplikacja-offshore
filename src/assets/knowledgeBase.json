@@ -1,18 +1,47 @@
-
 [
     {
     "id": 1,
-    "title": "What is offshore software development?",
-    "content": "Offshore software development refers to the practice of outsourcing software development tasks to a company or team located in a different country, often with lower labor costs. This allows businesses to access a larger talent pool and reduce expenses while still maintaining quality."
+    "title": "WSTĘP",
+    "content": "Witamy w naszej bazie wiedzy, stworzonej z myślą o wszystkich zainteresowanych tematyką bezpieczeństwa w środowisku off-shore i outdoorowym. Naszym celem jest dostarczenie rzetelnych informacji, które pomogą zrozumieć, jak ważne jest odpowiednie dobieranie i ocenianie stanu technicznego ŚOI (Środków Ochrony Indywidualnej) stosowanych w tych wymagających warunkach."
     },
     {
     "id": 2,
-    "title": "What are the benefits of offshore software development?",
-    "content": "The benefits of offshore software development include cost savings, access to a global talent pool, faster time-to-market, and the ability to focus on core business activities while the offshore team handles software development tasks."
+    "title": "DLACZEGO TO JEST WAŻNE?",
+    "content": "ŚOI są kluczowe w ochronie własnej lub innych przed wypadkmi. Ignorowanie degradacji materiałów prowadzi do: /n - Utraty właściwości ochronnych: Kask, który stał się kruchy, nie pochłonie energii uderzenia; lina o zniszczonych włóknach pęknie przy obciążeniu. /n - Skrócenia okresu przydatności: Warunki ekstremalne mogą sprawić, że sprzęt deklarowany na 10 lat, stanie się niebezpieczny już po 2 sezonach. /n - Ryzyka wypadków śmiertelnych: W branży offshore i outdoor ŚOI zapobiegają wypadkom i obrażeniom"
     },
     {
     "id": 3,
-    "title": "What are the challenges of offshore software development?",
-    "content": "Challenges of offshore software development can include communication barriers, time zone differences, cultural differences, and potential issues with quality control. However, these challenges can be mitigated with proper planning and management."
+    "title": "CZYNNIKI STARZENIOWE",
+    "content": "Praca w terenie naraża sprzęt na synergiczne działanie niszczących czynników: /n - Promieniowanie UV: Agresywne słońce, szczególnie na otwartym morzu lub w wysokich górach. /n - Woda morska i wilgotność: Sól krystalizująca się we włóknach uszkadza je prowadząc do rozdzierania materiału /n - Temperatura: Ekstremalne upały i mrozy powodują mikropęknięcia materiałów. /n - Czynniki mechaniczne: Piasek, ciągłe zginanie taśm i tarcie o szorstkie powierzchnie, skutkuje osłabieniem struktury tekstyliów, co prowadzi do przetarć, prucia się materiału oraz powstawania dziur."
+    },
+    {
+    "id": 4,
+    "title": "SŁOWNICZEK",
+    "content": "- ŚOI (Środki Ochrony Indywidualnej): Wyposażenie mające na celu ochronę pracownika przed uszkodzeniami. /n - Offshore: Branża związana z pracą na morzu (np. platformy wiertnicze, morskie farmy wiatrowe). /n - Outdoor: Aktywności i praca wykonywane na wolnym powietrzu, często w wymagającym terenie."
+    },
+    {
+    "id": 5,
+    "title": "KTO SKORZYSTA Z TEJ WIEDZY?",
+    "content": "- Specjaliści BHP: Do skutecznego nadzoru nad stanem wyposażenia pracowników. /n - Producenci ŚOI: Do lepszego projektowania sprzętu odpornego na trudne warunki. /n - Pracownicy i użytkownicy: Do identyfikacji, kiedy ich własny sprzęt traci swoje własności ochronne. /n - Pracodawcy: Do świadomego inwestowania w sprzęt wyższej jakości, który wytrzyma trudne warunki dłużej."
+    },
+    {
+    "id": 6,
+    "title": "ZAWODY OFFSHORE I OUTDOOR",
+    "content": "- Pracownicy morskich rafinerii i instalacji przetwórczych: Personel obsługujący jednostki pływające produkcyjno-wydobywcze (FPSO), gdzie kluczowa jest ochrona przed uszkodzeniami mechanicznymi, wysoką temperaturą skutkującą nadpaleniami oraz niezawodność mechanizmów zapięć w agresywnym środowisku. /n - Załogi jednostek transportu morskiego: Marynarze i oficerowie statków handlowych oraz technicznych, narażeni na ciągłe działanie soli i wilgoci, co wymaga sprawnej odzieży ostrzegawczej z taśmami odblaskowymi o wysokiej widoczności oraz osłon wzroku chroniących przed zmatowieniem. /n - Specjaliści sektora energetycznego: Inżynierowie i technicy pracujący na platformach wiertniczych oraz farmach wiatrowych, polegający na kaskach ochronnych i certyfikowanych szelkach bezpieczeństwa. /n - Technicy i monterzy wysokościowi: Osoby wykonujące prace na masztach telekomunikacyjnych, wieżach i konstrukcjach stalowych, dla których kluczowa jest stabilność regulatorów oraz brak przetarć na taśmach konstrukcyjnych. /n - Pracownicy przemysłowi i specjaliści obróbki materiałów: W tym spawacze wymagający ochrony twarzy przed nadpaleniami oraz operatorzy maszyn pracujący w hałasie, używający ochronników słuchu. /n - Personel logistyczny i portowy: Pracownicy operujący w środowisku o dużym zasoleniu, gdzie odzież ochronna z taśmami odblaskowymi oraz osłony wzroku są narażone na szybką degradację. /n - Służby ratunkowe, techniczne i mundurowe: Zespoły działające w terenie, gdzie sprzęt musi być odporny na pęknięcia mechaniczne oraz zapewniać doskonałe przyleganie mimo gwałtownych ruchów. /n - Pracownicy sektora leśnego i utrzymania zieleni: Osoby narażone na odpryski materiałów i uszkodzenia wzroku, korzystające z wizjerów odpornych na zmatowienia. /n - Instruktorzy i przewodnicy w turystyce kwalifikowanej: Profesjonaliści outdoorowi, u których długotrwała ekspozycja na UV wpływa na stabilność polimerów w kaskach i wytrzymałość tekstylnych elementów nośnych"
+    },
+    {
+    "id": 7,
+    "title": "DOBÓR ŚOI",
+    "content": "AAA"
+    },
+    {
+    "id": 8,
+    "title": "OCENA STANU TECHNICZNEGO",
+    "content": "AAA"
+    },
+    {
+    "id": 9,
+    "title": "SZACOWANIE RZECZYWISTEJ DATY PRZYDATNOŚCI ŚOI",
+    "content": "AAA"
     }
 ]
