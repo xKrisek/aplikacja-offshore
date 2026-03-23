@@ -69,15 +69,26 @@ function Narzedzie() {
                 <Route path="obiekty-z-polimerow-stalych/helmy-ochronne/" element={
                     <div className='narzedzie_ocena'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne</h2>
-                        <button style={{backgroundColor: `${color_checked}`}}>Ocena stanu skorupy</button><br/>
-                        <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu więźby i zaczepów</button><br/>
-                        <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu paska podbródkowego</button>
+                        <NavLink to='ocena-stanu-skorupy'>
+                            <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu skorupy</button><br/>
+                        </NavLink>
+                        <NavLink to='ocena-stanu-wiezby-i-zaczepow'>
+                            <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu więźby i zaczepów</button><br/>
+                        </NavLink>
+                        <NavLink to='ocena-stanu-paska-podbrodkowego'>
+                            <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu paska podbródkowego</button>
+                        </NavLink>
                         <div id="sprawdz_stan" style={{float: 'right'}}>
                             <p id='check_condition_p' style={{width: '25%'}}>Aby ocenić właściwy stan techniczny środków ochrony przejrzyj wszystkie pola</p>
                             <button id='check_condition_button'>Sprawdź stan techniczny</button>
                         </div>
                     </div>
                 } />
+
+                {/* Tekstylia */}
+                {/* Metale */}
+
+                <Route path='ocena-stanu-skorupy' />
             </Routes>
         </>
     )

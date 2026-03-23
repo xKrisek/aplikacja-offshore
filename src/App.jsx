@@ -11,7 +11,7 @@ import languageSvg from './assets/language.svg'
 import polandFlag from './assets/poland-flag-icon.svg'
 import germanyFlag from './assets/germany-flag-icon.svg'
 import britainFlag from './assets/britain-flag-icon.svg'
-import knowledgeBase from './assets/knowledgeBase.json'
+import data from './assets/data.json'
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 function App() {
@@ -165,7 +165,7 @@ function App() {
               <h2><strong>Narzędzie wspierające decyzyjność</strong> w zakresie doboru i oceny stanu technicznego ŚOI stosowanych w obszarze off-shore i innych outdoorowych.</h2>
             </div>
           } />
-          <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy baza={knowledgeBase} />} />
+          <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy baza={data["knowledgeBase"]} />} />
           <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie />} />
         </Routes>
       </main>

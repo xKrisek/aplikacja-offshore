@@ -8,7 +8,7 @@ console.log('Hello world!')
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/aplikacja-offshore">
     <App />
     </BrowserRouter>
   </StrictMode>,
