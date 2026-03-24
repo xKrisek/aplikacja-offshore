@@ -3,6 +3,7 @@ import { Routes, Route, NavLink, useLocation } from 'react-router';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import './bazaWiedzy.css';
+import kask from '../assets/kask.png';
 
 function Narzedzie(props) {
 
@@ -14,6 +15,8 @@ function Narzedzie(props) {
     const [criteria3, setCriteria3] = useState(null);
     const [showResult, setShowResult] = useState(false)
     const [currentSOI, setCurrentSOI] = useState("");
+    const [pointsSum, setPointsSum] = useState(0);
+    const [isChecked, setIsChecked] = useState(false)
 
     const [criteriasDone, setCriteriasDone] = useState([]);
 
@@ -28,6 +31,15 @@ function Narzedzie(props) {
         }
     }
 
+    function handleCheckboxChange(checked, points) {
+        if (!checked) {
+            setPointsSum(prevPoints => prevPoints - points)
+        }
+        else
+        {
+            setPointsSum(prevPoints => prevPoints + points)
+        }
+    }
 
     return(
         <>
@@ -135,11 +147,11 @@ function Narzedzie(props) {
                         <div style={{float: 'left', width: '30%'}}>
                             {Object.entries(props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu skorupy"]["symptoms"]).map(([symptom, items]) => (
                                     <div key={symptom} className='rating_condition'>
-                                        <div style={{width: '30%'}}><input type="checkbox" name="check" id="check1" /></div>
+                                        <div style={{width: '30%'}}><input type="checkbox" onChange={(e) => {handleCheckboxChange(e.target.checked, items.points)}} /></div>
                                         <div style={{width: '40%'}}><p>{symptom}</p></div>
                                         <div style={{width: '30%'}}><button id='info_button' onClick={() => {setCriteria1(symptom);}}>?</button></div>
                                     </div>
-                                ))}
+                                ))} 
                             <Link to=".." relative="path">
                                 <button onClick={() => {setCriteria1(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 1])}}>Dalej</button>
                             </Link>
@@ -148,8 +160,8 @@ function Narzedzie(props) {
                             <div id='narzedzie-opis'>
                                 <h2>{criteria1}</h2>
                                 <hr style={{width: '90%'}}/>
-                                <img src="eoeo" alt="dobry_stan" />
-                                <img src="eoeo" alt="uszkodzony" />
+                                <img src={kask} alt="dobry_stan" />
+                                <img src={kask} alt="uszkodzony" />
                                 <h3>Kryteria</h3>
                                 <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu skorupy"]["symptoms"][criteria1]["information"]}</p>
                                 <button onClick={() => {setCriteria1(null)}}>OK</button>
@@ -167,7 +179,7 @@ function Narzedzie(props) {
                         <div style={{float: 'left', width: '30%'}}>
                             {Object.entries(props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu więźby i zaczepów"]["symptoms"]).map(([symptom, items]) => (
                                     <div key={symptom} className='rating_condition'>
-                                        <div style={{width: '30%'}}><input type="checkbox" name="check" id="check1" /></div>
+                                        <div style={{width: '30%'}}><input type="checkbox" onChange={(e) => {handleCheckboxChange(e.target.checked, items.points)}} /></div>
                                         <div style={{width: '40%'}}><p>{symptom}</p></div>
                                         <div style={{width: '30%'}}><button id='info_button' onClick={() => {setCriteria2(symptom);}}>?</button></div>
                                     </div>
@@ -180,8 +192,8 @@ function Narzedzie(props) {
                             <div id='narzedzie-opis'>
                                 <h2>{criteria2}</h2>
                                 <hr style={{width: '90%'}}/>
-                                <img src="eoeo" alt="dobry_stan" />
-                                <img src="eoeo" alt="uszkodzony" />
+                                <img src={kask} alt="dobry_stan" />
+                                <img src={kask} alt="uszkodzony" />
                                 <h3>Kryteria</h3>
                                 <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu więźby i zaczepów"]["symptoms"][criteria2]["information"]}</p>
                                 <button onClick={() => {setCriteria2(null)}}>OK</button>
@@ -199,7 +211,7 @@ function Narzedzie(props) {
                         <div style={{float: 'left', width: '30%'}}>
                             {Object.entries(props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu paska podbródkowego"]["symptoms"]).map(([symptom, items]) => (
                                     <div key={symptom} className='rating_condition'>
-                                        <div style={{width: '30%'}}><input type="checkbox" name="check" id="check1" /></div>
+                                        <div style={{width: '30%'}}><input type="checkbox" onChange={(e) => {handleCheckboxChange(e.target.checked, items.points)}} /></div>
                                         <div style={{width: '40%'}}><p>{symptom}</p></div>
                                         <div style={{width: '30%'}}><button id='info_button' onClick={() => {setCriteria3(symptom);}}>?</button></div>
                                     </div>
@@ -212,8 +224,8 @@ function Narzedzie(props) {
                             <div id='narzedzie-opis'>
                                 <h2>{criteria3}</h2>
                                 <hr style={{width: '90%'}}/>
-                                <img src="eoeo" alt="dobry_stan" />
-                                <img src="eoeo" alt="uszkodzony" />
+                                <img src={kask} alt="dobry_stan" />
+                                <img src={kask} alt="uszkodzony" />
                                 <h3>Kryteria</h3>
                                 <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu paska podbródkowego"]["symptoms"][criteria3]["information"]}</p>
                                 <button onClick={() => {setCriteria3(null)}}>OK</button>
@@ -229,13 +241,13 @@ function Narzedzie(props) {
                 <div className='wynik_koncowy_black'>
                     <div className='wynik_koncowy'>
                         <h2>OCENA STANU TECHNICZNEGO</h2>
-                        <h3>WYNIK OCENY</h3>
+                        <h3 style={{color: '#ffb700'}}>WYNIK OCENY</h3>
                         <p>Stan twojego środka ochrony <strong>({currentSOI})</strong> jest</p>
-                        <h3>POPRAWNY</h3><p>brak przeciwskazań</p>
-                        {/* <h3>DOPUSZCZALNY</h3><p>zalecana ocena stanu technicznego przed każdym użyciem</p>
-                        <h3>NEGATYWNY</h3><p>wycofaj z użytkowania</p> */}
-                        <Link to=".." relative='path'>
-                            <button onClick={() => {setShowResult(false); setCriteria1(false); setCriteria2(false); setCriteria3(false); setCriteriasDone([])}}>Powrót</button>
+                        {pointsSum <= 30 ? (<><h3 style={{color: '#78afbd'}}>POPRAWNY</h3><p>Brak przeciwskazań w użytkowaniu</p></>) : (<></>)}
+                        {pointsSum > 30 && pointsSum <= 50 ? (<><h3 style={{color: '#ffb700'}}>DOPUSZCZALNY</h3><p>Zalecana ocena stanu technicznego przed każdym użyciem</p></>) : (<></>)}
+                        {pointsSum > 50 ? (<><h3 style={{color: 'darkred'}}>NEGATYWNY</h3><p>Wycofaj z użytkowania</p></>) : (<></>)}
+                        <Link to="/aplikacja-offshore/narzedzie">
+                            <button onClick={() => {setShowResult(false); setCriteria1(null); setCriteria2(null); setCriteria3(null); setCriteriasDone([]); setPointsSum(0); setSelectedSymptoms(new Set()); console.log(criteria1)}}>Powrót</button>
                         </Link>
                     </div>
                 </div>

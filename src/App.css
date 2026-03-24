@@ -1,5 +1,5 @@
 body {
-  --header-height: 11%;
+  --header-height: 5rem;
 }
 
 .bg{
@@ -78,7 +78,7 @@ nav img{
 }
 
 #language-container{
-  line-height: 60px;
+  line-height: 40px;
   height: 100%;
   width: 25%;
   float: right;
@@ -96,17 +96,17 @@ nav img{
 
 .lang-button img{
   float: right;
-  height: 50px;
+  height: 40px;
   margin-top: 10px;
   margin-right: 5px;
 }
 
 .lang-button{
   background-color: #ddd;
-  height: 70px;
-  width: 90px;
+  height: 60px;
+  width: 80px;
   border-radius: 0 1rem 0 1rem;
-  margin-top: 5px;
+  margin-top: 10px;
   float: right;
   margin-right: 20px;
   position: relative;
@@ -119,7 +119,7 @@ nav img{
 }
 
 .lang-button svg{
-  height: 70px;
+  height: 60px;
   margin: 0;
   float: left;
 }
@@ -158,12 +158,6 @@ header h1{
   letter-spacing: 0.5rem;
   color: black;
   text-shadow: -4px 4px white;
-}
-
-#logo{
-  height: 100%;
-  margin-left: 20px;
-  float: left;
 }
 
 button {

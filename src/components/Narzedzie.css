@@ -1,3 +1,5 @@
+@import url(../index.css);
+
 #narzedzie-title {
     margin: 20px 50px;
 }
@@ -32,6 +34,11 @@
 
 .narzedzie_container button {
     transition: none;
+}
+
+.narzedzie_container img {
+    width: 40%;
+    margin: 1rem;
 }
 
 .narzedzie_container::-webkit-scrollbar {
@@ -77,6 +84,7 @@ tr {
     background-color: lightgray;
     margin: -1rem 0 -2rem -1rem;
     border-radius: 2rem 0 0 2rem;
+    position: relative;
 }
 
 .menu h3{
@@ -118,12 +126,21 @@ tr {
     border-radius: 0.5rem;
     box-shadow: 0 0 5px lightgray;
     background-color: #f9f9f9;
-    color: black !important;
+}
+
+.menu .read+ul li:hover{
+    background-color: #cee5eb;
+    box-shadow: 0 0 5px gray;
 }
 
 .read{
-    background-color: #78afbd;
-    color: white !important;
+    background-color: #78afbd !important;
+    color: white;
+}
+
+.read+ul{
+    background-color: #aad4de;
+    box-shadow: 0 0 10px gray;
 }
 
 .categ-hidden{
@@ -148,6 +165,11 @@ tr {
     margin: -1rem -1rem -2rem 0;
     border-radius: 0 2rem 2rem 0;
     padding: 1rem 1rem 2rem 1rem;
+    position: relative;
+}
+
+.information::-webkit-scrollbar{
+    visibility: visible;
 }
 
 .rotated-arrow{
@@ -168,6 +190,58 @@ tr {
     stroke-width: 1px;
     margin: 1rem;
     cursor: pointer;
+}
+
+.return-arrow:hover{
+    filter: drop-shadow(0 0 5px black);
+}
+
+#submit-condition-btn{
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #78afbd;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+#submit-condition-btn:hover{
+    transform: scale(1.1) translateX(-45%);
+    box-shadow: 0 0 10px #5c5c5c;
+}
+
+#check-btn{
+    width: 35%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2rem;
+    left: 6.6%;
+    line-height: 2rem;
+    background-color: #78afbd;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#check-btn input[type="checkbox"]{
+    padding: 0;
+    margin: 0;
+}
+
+#continue-btn{
+    width: 35%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 2rem;
+    right: 6.6%;
+    line-height: 2rem;
+    background-color: #78afbd;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 input[type="checkbox"] {
@@ -221,10 +295,11 @@ input[type="checkbox"]:checked::after {
 #narzedzie-opis{
     width: 50%;
     float: right;
-    height: 100%;
+    height: auto;
     border-radius: 2rem 2rem 2rem 2rem;
     border: 0.1rem solid black;
     margin-top: 3rem;
+    min-height: 100%;
 }
 
 .wynik_koncowy {
