@@ -3,6 +3,7 @@ import Select, { components } from 'react-select'
 import './App.css'
 import { useState, useEffect } from 'react'
 import Narzedzie from './components/Narzedzie'
+import NarzedzieCopy from './components/Narzedziecopy.jsx'
 import BazaWiedzy from './components/bazaWiedzy'
 import homepageSvg from './assets/homepage.svg'
 import bazaWiedzySvg from './assets/baza-wiedzy.svg'
@@ -12,7 +13,7 @@ import polandFlag from './assets/poland-flag-icon.svg'
 import germanyFlag from './assets/germany-flag-icon.svg'
 import britainFlag from './assets/britain-flag-icon.svg'
 import data from './assets/data.json'
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { BsChevronCompactLeft } from "react-icons/bs";
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
   document.getElementById('root')
 
   const [showLang, setShowLang] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   const { Option } = components;
   const IconOption = (props) => (
@@ -94,7 +95,7 @@ function App() {
             <BsChevronCompactLeft style={{fontSize: '35px'}} className={showLang ? 'rotate' : ''}/>
           </div>
           <Select
-            className={showLang ? '' : 'hidden'}
+            className={showLang ? '' : 'lang-hidden'}
             defaultValue={languageOptions[0]}
             options={languageOptions}
             components={{ Option: IconOption, SingleValue: IconValue }}
@@ -169,7 +170,8 @@ function App() {
             </div>
           } />
           <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy baza={data["knowledgeBase"]} />} />
-          <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie />} />
+          <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie data={data["conditionTool"]} />} />
+          <Route path="/aplikacja-offshore/narzedziecopy/*" element={<NarzedzieCopy toolData={data["conditionTool"]}/>} />
         </Routes>
       </main>
     </div>

@@ -45,5 +45,218 @@
         "title": "SZACOWANIE RZECZYWISTEJ DATY PRZYDATNOŚCI ŚOI",
         "content": ""
         }
-    ]
+    ],
+    "conditionTool": {
+        "Obiekty z polimerów stałych": {
+            "Hełmy ochronne": {
+                "Ocena stanu skorupy": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Pęknięcia":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Głębokie otarcia":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Odpryski":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Wyszczerbienia":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Ocena stanu więźby i zaczepów": {
+                    "symptoms": {
+                        "Osłabienie połączeń":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Uszkodzenie więźby":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Uszkodzenie szwów":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Ocena stanu paska podbródkowego": {
+                    "symptoms": {
+                        "Uszkodzenie zaczepów":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Uszkodzenie regulacji":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Uszkodzenie zapięć":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                }
+            },
+            "Okulary, gogle, osłony twarzy": {
+                "Ocena stanu skorupy": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                },
+                "Ocena stanu więźby i zaczepów": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                },
+                "Ocena stanu paska podbródkowego": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                }
+            },
+            "Ochronniki słuchu": {
+                "Ocena stanu skorupy": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                },
+                "Ocena stanu więźby i zaczepów": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                },
+                "Ocena stanu paska podbródkowego": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                }
+            },
+            "Przyłbice spawalnicze": {
+                "Ocena stanu skorupy": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                },
+                "Ocena stanu więźby i zaczepów": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+            },
+                "Ocena stanu paska podbródkowego": {
+                    "symptoms": {
+                        "Odkształcenia":{
+                            "points": 123,
+                            "information": "eoeo123"
+                        },
+                        "Zmiany koloru":{
+                            "points": 321,
+                            "information": "eoeo321"
+                        },
+                        "": {
+                            
+                        }
+                    }
+                }
+            }
+        },
+        "Obiekty włókiennicze / tekstylne": {
+
+        },
+        "Obiekty metalowe": {
+
+        }
+    }
 }

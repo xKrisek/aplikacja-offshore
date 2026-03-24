@@ -1,11 +1,33 @@
 import './Narzedzie.css'
 import { Routes, Route, NavLink, useLocation } from 'react-router';
+import { Link } from 'react-router-dom'
 import { useState } from 'react';
+import './bazaWiedzy.css';
 
-function Narzedzie() {
+function Narzedzie(props) {
 
     const color_unchecked = 'white';
     const color_checked = '#78afbd';
+
+    const [criteria1, setCriteria1] = useState(null);
+    const [criteria2, setCriteria2] = useState(null);
+    const [criteria3, setCriteria3] = useState(null);
+    const [showResult, setShowResult] = useState(false)
+    const [currentSOI, setCurrentSOI] = useState("");
+
+    const [criteriasDone, setCriteriasDone] = useState([]);
+
+    function checkAllConditionHandler() {
+        if (criteriasDone.includes(1) && criteriasDone.includes(2) && criteriasDone.includes(3))
+        {
+            setShowResult(true)
+        }
+        else
+        {
+            alert("Przejrzyj wszystkie opcje!!!")
+        }
+    }
+
 
     return(
         <>
@@ -32,7 +54,7 @@ function Narzedzie() {
                     <div className='narzedzie_container'>
                     <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych</h2>
                     <NavLink to="helmy-ochronne/">
-                        <button id='narzedzie_button_yellow'>Hełmy ochronne</button>
+                        <button id='narzedzie_button_yellow' onClick={() => {setCurrentSOI("Hełm ochronny")}}>Hełmy ochronne</button>
                     </NavLink>
                     <NavLink to="okulary_gogle_oslony_twarzy/">
                         <button id='narzedzie_button_blue'>Okulary, gogle, osłony twarzy</button><br/>
@@ -61,20 +83,44 @@ function Narzedzie() {
                 } />
 
                 <Route path="obiekty-z-polimerow-stalych/helmy-ochronne/" element={
-                    <div className='narzedzie_ocena'>
+                    <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne</h2>
                         <NavLink to='ocena-stanu-skorupy/'>
-                            <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu skorupy</button><br/>
+                            {criteriasDone.includes(1) ? (
+                                <>
+                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena stanu skorupy</button><br/>
+                                </>
+                            ) : (
+                                <>
+                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu skorupy</button><br/>
+                                </>
+                            )}
                         </NavLink>
                         <NavLink to='ocena-stanu-wiezby-i-zaczepow/'>
-                            <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu więźby i zaczepów</button><br/>
+                            {criteriasDone.includes(2) ? (
+                                <>
+                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena stanu więźby i zaczepów</button><br/>
+                                </>
+                            ) : (
+                                <>
+                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu więźby i zaczepów</button><br/>
+                                </>
+                            )}
                         </NavLink>
                         <NavLink to='ocena-stanu-paska-podbrodkowego/'>
-                            <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu paska podbródkowego</button>
+                            {criteriasDone.includes(3) ? (
+                                <>
+                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena stanu paska podbródkowego</button>
+                                </>
+                            ) : (
+                                <>
+                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu paska podbródkowego</button>
+                                </>
+                            )}
                         </NavLink>
                         <div id="sprawdz_stan" style={{float: 'right'}}>
                             <p id='check_condition_p' style={{width: '25%'}}>Aby ocenić właściwy stan techniczny środków ochrony przejrzyj wszystkie pola</p>
-                            <button id='check_condition_button'>Sprawdź stan techniczny</button>
+                            <button id='check_condition_button' onClick={() => {checkAllConditionHandler()}}>Sprawdź stan techniczny</button>
                         </div>
                     </div>
                 } />
@@ -82,21 +128,118 @@ function Narzedzie() {
                 {/* Tekstylia */}
                 {/* Metale */}
 
+                {/* Hełmy ochronne - ocena stanu skorupy */}
                 <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-skorupy/' element={
-                    <div className='narzedzie_ocena'>
+                    <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu skorupy</h2>
-                        <div>
-                            <input type="checkbox" name="check" id="check1" /><button>Odkształcenia</button>
+                        <div style={{float: 'left', width: '30%'}}>
+                            {Object.entries(props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu skorupy"]["symptoms"]).map(([symptom, items]) => (
+                                    <div key={symptom} className='rating_condition'>
+                                        <div style={{width: '30%'}}><input type="checkbox" name="check" id="check1" /></div>
+                                        <div style={{width: '40%'}}><p>{symptom}</p></div>
+                                        <div style={{width: '30%'}}><button id='info_button' onClick={() => {setCriteria1(symptom);}}>?</button></div>
+                                    </div>
+                                ))}
+                            <Link to=".." relative="path">
+                                <button onClick={() => {setCriteria1(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 1])}}>Dalej</button>
+                            </Link>
                         </div>
-                        <div>
-                            <input type="checkbox" name="check" id="check1" /><button>Zmiany koloru</button>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="check" id="check1" /><button>Zmiany koloru</button>
-                        </div>
+                        {criteria1 != null ? (
+                            <div id='narzedzie-opis'>
+                                <h2>{criteria1}</h2>
+                                <hr style={{width: '90%'}}/>
+                                <img src="eoeo" alt="dobry_stan" />
+                                <img src="eoeo" alt="uszkodzony" />
+                                <h3>Kryteria</h3>
+                                <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu skorupy"]["symptoms"][criteria1]["information"]}</p>
+                                <button onClick={() => {setCriteria1(null)}}>OK</button>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
                     </div>
                 } />
+
+                {/* Hełmy ochronne - ocena stanu więźby i zaczepów */}
+                <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-wiezby-i-zaczepow/' element={
+                    <div className='narzedzie_container'>
+                        <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu więźby i zaczepów</h2>
+                        <div style={{float: 'left', width: '30%'}}>
+                            {Object.entries(props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu więźby i zaczepów"]["symptoms"]).map(([symptom, items]) => (
+                                    <div key={symptom} className='rating_condition'>
+                                        <div style={{width: '30%'}}><input type="checkbox" name="check" id="check1" /></div>
+                                        <div style={{width: '40%'}}><p>{symptom}</p></div>
+                                        <div style={{width: '30%'}}><button id='info_button' onClick={() => {setCriteria2(symptom);}}>?</button></div>
+                                    </div>
+                                ))}
+                            <Link to=".." relative="path">
+                                <button onClick={() => {setCriteria2(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 2])}}>Dalej</button>
+                            </Link>
+                        </div>
+                        {criteria2 != null ? (
+                            <div id='narzedzie-opis'>
+                                <h2>{criteria2}</h2>
+                                <hr style={{width: '90%'}}/>
+                                <img src="eoeo" alt="dobry_stan" />
+                                <img src="eoeo" alt="uszkodzony" />
+                                <h3>Kryteria</h3>
+                                <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu więźby i zaczepów"]["symptoms"][criteria2]["information"]}</p>
+                                <button onClick={() => {setCriteria2(null)}}>OK</button>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+                    </div>
+                } />
+
+                {/* Hełmy ochronne - ocena stanu paska podbródkowego */}
+                <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-paska-podbrodkowego/' element={
+                    <div className='narzedzie_container'>
+                        <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu paska podbródkowego</h2>
+                        <div style={{float: 'left', width: '30%'}}>
+                            {Object.entries(props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu paska podbródkowego"]["symptoms"]).map(([symptom, items]) => (
+                                    <div key={symptom} className='rating_condition'>
+                                        <div style={{width: '30%'}}><input type="checkbox" name="check" id="check1" /></div>
+                                        <div style={{width: '40%'}}><p>{symptom}</p></div>
+                                        <div style={{width: '30%'}}><button id='info_button' onClick={() => {setCriteria3(symptom);}}>?</button></div>
+                                    </div>
+                                ))}
+                            <Link to=".." relative="path">
+                                <button onClick={() => {setCriteria3(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 3])}}>Dalej</button>
+                            </Link>
+                        </div>
+                        {criteria3 != null ? (
+                            <div id='narzedzie-opis'>
+                                <h2>{criteria3}</h2>
+                                <hr style={{width: '90%'}}/>
+                                <img src="eoeo" alt="dobry_stan" />
+                                <img src="eoeo" alt="uszkodzony" />
+                                <h3>Kryteria</h3>
+                                <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu paska podbródkowego"]["symptoms"][criteria3]["information"]}</p>
+                                <button onClick={() => {setCriteria3(null)}}>OK</button>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+                    </div>
+                } />
+
             </Routes>
+            {showResult && 
+                <div className='wynik_koncowy_black'>
+                    <div className='wynik_koncowy'>
+                        <h2>OCENA STANU TECHNICZNEGO</h2>
+                        <h3>WYNIK OCENY</h3>
+                        <p>Stan twojego środka ochrony <strong>({currentSOI})</strong> jest</p>
+                        <h3>POPRAWNY</h3><p>brak przeciwskazań</p>
+                        {/* <h3>DOPUSZCZALNY</h3><p>zalecana ocena stanu technicznego przed każdym użyciem</p>
+                        <h3>NEGATYWNY</h3><p>wycofaj z użytkowania</p> */}
+                        <Link to=".." relative='path'>
+                            <button onClick={() => {setShowResult(false); setCriteria1(false); setCriteria2(false); setCriteria3(false); setCriteriasDone([])}}>Powrót</button>
+                        </Link>
+                    </div>
+                </div>
+            }
         </>
     )
 }

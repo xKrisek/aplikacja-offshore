@@ -16,10 +16,10 @@ body {
   background-repeat: no-repeat;
 }
 
-/* .bg-dark{
+.bg-dark{
   background-image: url('./assets/bg-dark-2.svg') !important;
   color: white;
-} */
+}
 
 .text-w{
   color: white !important;
@@ -85,7 +85,7 @@ nav img{
   text-align: right;
 }
 
-.hidden{
+.lang-hidden{
   opacity: 0;
   transform: translateX(350px) translateY(40px) scale(0);
 }
@@ -156,8 +156,8 @@ header h1{
   font-size: 225%;
   line-height: 2.25rem;
   letter-spacing: 0.5rem;
-  color: white;
-  text-shadow: -4px 4px black;
+  color: black;
+  text-shadow: -4px 4px white;
 }
 
 #logo{
@@ -184,7 +184,11 @@ button {
 
 /* @media (min-width: 1800px) {
   body{
-    zoom: 1.25;
+
+  }
+
+  .knowledge-base{
+
   }
   main div {
     width: 40%; 
