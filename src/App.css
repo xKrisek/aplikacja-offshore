@@ -2,10 +2,14 @@ body {
   --header-height: 5rem;
 }
 
+html::-webkit-scrollbar{
+  display: none;
+}
+
 .bg{
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
   top: 0;
   left: 0;
   background-size: 1920px;
@@ -15,6 +19,14 @@ body {
   transition: none;
   background-repeat: no-repeat;
 }
+
+footer{
+  min-height: 10vh;
+  background-color: red;
+  padding: 0;
+  margin: 0;
+}
+
 
 .bg-dark{
   background-image: url('./assets/bg-dark-2.svg') !important;
@@ -33,11 +45,10 @@ header {
   position: fixed;
   z-index: 1000;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: var(--header-height);
   background-color: lightgray;
   box-shadow: 0 0 20px #000000aa;
-  padding: 0 10px;
 }
 
 nav{
@@ -48,8 +59,8 @@ nav{
 
 main {
   margin-top: 10vh;
-  height: 90vh;
-  overflow: hidden;
+  min-height: 90vh;
+  overflow: auto;
 }
 
 #main-site-desc{
@@ -142,6 +153,11 @@ header a:hover, .selected-location{
   font-weight: bold;
 }
 
+.koncept2.selected-location{
+  transform: scale(1,1);
+  scale: 115%;
+}
+
 header a p{
   line-height: 30px;
   float: left;
@@ -150,14 +166,19 @@ header a p{
 }
 
 header h1{
-  width: 25%;
+  width: calc(25vw - 10px);
   height: 80%;
   margin-top: 0;
+  padding-left: 10px;
   font-size: 225%;
   line-height: 2.25rem;
   letter-spacing: 0.5rem;
   color: black;
   text-shadow: -4px 4px white;
+}
+
+.bg::-webkit-scrollbar{
+  display: none;
 }
 
 button {
@@ -174,6 +195,12 @@ button {
   nav { width: 100%; }
   .knowledge-base { width: 90%; }
   #main-site-desc { width: 80%; }
+}
+
+.koncept2{
+  position: fixed;
+  right: 6rem;
+  width: 15rem;
 }
 
 /* @media (min-width: 1800px) {

@@ -1,7 +1,7 @@
 import './Narzedzie.css'
-import { Routes, Route, NavLink, useLocation } from 'react-router';
+import { Routes, Route, NavLink } from 'react-router';
 import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './bazaWiedzy.css';
 import kask from '../assets/kask.png';
 
@@ -16,16 +16,36 @@ function Narzedzie(props) {
     const [showResult, setShowResult] = useState(false)
     const [currentSOI, setCurrentSOI] = useState("");
     const [pointsSum, setPointsSum] = useState(0);
+    const [valuePoint, setValuePoint] = useState(1)
+
     const [path, setPath] = useState("")
+    const [arrayPath, setArrayPath] = useState([])
 
     const location = useLocation();
     const [textPath, setTextPath] = useState("Ocena stanu technicznego")
 
-    const [criteriasDone, setCriteriasDone] = useState([]);
+    const [criteriasDone, setCriteriasDone] = useState("");
 
     useEffect(() => {
-        if (location.pathname === "/" || location.pathname === "/narzedzie") {
+        if (location.pathname === "/" || location.pathname === "/aplikacja-offshore/narzedzie") {
             setTextPath("Ocena stanu technicznego");
+            setArrayPath("");
+            setPath("");
+        } else {
+            const pathSegments = location.pathname.split('/').filter(seg => seg);
+            if (pathSegments.length > 0) {
+                const urlPath = pathSegments[pathSegments.length - 1];
+                Object.keys(props.data).forEach(key => {
+                    if (toLink(key) === urlPath) {
+                        setArrayPath(key);
+                        setPath(toLink(key));
+                        if (!textPath.includes(key))
+                        {
+                            setTextPath(textPath + '/' + key);   
+                        }
+                    }
+                });
+            }
         }
     }, [location.pathname]);
 
@@ -78,6 +98,7 @@ function Narzedzie(props) {
     return(
         <>
             <Routes>
+                {/* Obiekty */}
                 <Route index element={
                     <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">{textPath}</h2>
@@ -85,33 +106,31 @@ function Narzedzie(props) {
                             const linkPath = toLink(key);
                             return (
                                 <>
-                                    <NavLink key={key} to={linkPath} onClick={() => {setPath(linkPath); setTextPath(textPath + '/' + key)}}>
+                                    <NavLink key={key} to={linkPath} onClick={() => {setPath(linkPath); setArrayPath(key)}}>
                                         <button id='narzedzie_button_blue'>{key}</button><br/>
                                     </NavLink>
                                 </>
                             )
                         })}
                     </div>
-                } onLoad={() => {setTextPath("Ocena stanu technicznego")}} />
+                }/>
 
                 {/* Obiekty z polimerów stałych */}
                 <Route path={path} element={
                     <div className='narzedzie_container'>
                     <h2 id="narzedzie-title">{textPath}</h2>
-                    <NavLink to="helmy-ochronne/">
-                        <button id='narzedzie_button_yellow' onClick={() => {setCurrentSOI("Hełm ochronny")}}>Hełmy ochronne</button>
-                    </NavLink>
-                    <NavLink to="okulary-gogle-oslony-twarzy/">
-                        <button id='narzedzie_button_blue' onClick={() => {setCurrentSOI("Okulary, gogle, osłony twarzy")}}>Okulary, gogle, osłony twarzy</button><br/>
-                    </NavLink>
-                    <NavLink to="ochronniki-sluchu/">
-                        <button id='narzedzie_button_blue'>Ochronniki słuchu</button>
-                    </NavLink>
-                    <NavLink to="przylbice-spawalnicze/">
-                        <button id='narzedzie_button_yellow'>Przyłbice spawalnicze</button>
-                    </NavLink>
+                    {arrayPath != "" && Object.entries(props.data[arrayPath]).map(([key, value]) => {
+                        const linkPath = toLink(key);
+                        console.log(linkPath);
+                        
+                        return (
+                            <NavLink key={key} to={linkPath} onClick={() => {setCurrentSOI(key); setPath(linkPath)}}>
+                                <button id='narzedzie_button_blue'>{key}</button><br/>
+                            </NavLink>
+                        )
+                    })}
                     </div>
-                } />
+                }/>
 
                 {/* Hełmy ochronne */}
                 <Route path="obiekty-z-polimerow-stalych/helmy-ochronne/" element={
@@ -213,6 +232,7 @@ function Narzedzie(props) {
                                 <img src={kask} alt="uszkodzony" />
                                 <h3>Kryteria</h3>
                                 <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu więźby i zaczepów"]["symptoms"][criteria2]["information"]}</p>
+                                <label>Stopień zniszczeń: <input type="range" min={1} max={10} value={valuePoint} onChange={(e) => {setValuePoint(e.target.value)}} /> {valuePoint}</label>
                                 <button onClick={() => {setCriteria2(null)}}>OK</button>
                             </div>
                         ) : (
@@ -245,6 +265,7 @@ function Narzedzie(props) {
                                 <img src={kask} alt="uszkodzony" />
                                 <h3>Kryteria</h3>
                                 <p>{props.data["Obiekty z polimerów stałych"]["Hełmy ochronne"]["Ocena stanu paska podbródkowego"]["symptoms"][criteria3]["information"]}</p>
+                                <label>Stopień zniszczeń: <input type="range" min={1} max={10} value={valuePoint} onChange={(e) => {setValuePoint(e.target.value)}} /> {valuePoint}</label>
                                 <button onClick={() => {setCriteria3(null)}}>OK</button>
                             </div>
                         ) : (

@@ -80,15 +80,15 @@
                 "Ocena stanu więźby i zaczepów": {
                     "symptoms": {
                         "Osłabienie połączeń":{
-                            "points": 10,
+                            "points": 1,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie więźby":{
-                            "points": 20,
+                            "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie szwów":{
-                            "points": 20,
+                            "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
                     }
@@ -96,15 +96,15 @@
                 "Ocena stanu paska podbródkowego": {
                     "symptoms": {
                         "Uszkodzenie zaczepów":{
-                            "points": 20,
+                            "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie regulacji":{
-                            "points": 10,
+                            "points": 1,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie zapięć":{
-                            "points": 20,
+                            "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
                     }

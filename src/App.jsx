@@ -12,6 +12,7 @@ import languageSvg from './assets/language.svg'
 import polandFlag from './assets/poland-flag-icon.svg'
 import germanyFlag from './assets/germany-flag-icon.svg'
 import britainFlag from './assets/britain-flag-icon.svg'
+import logo_ciop from './assets/kask.png'
 import data from './assets/data.json'
 import { BsChevronCompactLeft } from "react-icons/bs";
 
@@ -82,9 +83,19 @@ function App() {
               <p>Narzędzie</p>
             </div>
           </NavLink>
+
+          <NavLink  
+            to="/aplikacja-offshore/narzedziecopy" 
+            className={({ isActive }) => isActive ? 'selected-location koncept2' : 'koncept2' }
+          >
+            <div>
+               <img src={ocenaStanuTechSvg} alt="Narzędzie (koncept 2)" /> 
+              <p>Narzędzie (koncept 2)</p>
+            </div>
+          </NavLink>
         </nav>
 
-        <div id='language-container'>
+        <div id='language-container' tabIndex="0" onBlur={(e) => {!e.currentTarget.contains(e.relatedTarget) && setShowLang(false)}}>
           <div className='lang-button' onClick={() => setShowLang(!showLang)}>
             <img src={languageSvg} alt="Language" />
             <BsChevronCompactLeft style={{fontSize: '35px'}} className={showLang ? 'rotate' : ''}/>
@@ -98,7 +109,7 @@ function App() {
             styles={{
               control: (base) => ({
                 ...base,
-                borderRadius: '1rem 0 0 1rem',
+                borderRadius: '1rem 0 0 0',
                 borderColor: '#000',
                 backgroundColor: '#eee',
                 height: '40px',
@@ -141,12 +152,13 @@ function App() {
               menu: (base) => ({
                 ...base,
                 width: '200px',
-                marginLeft: '53px',
-                marginTop: '70px',
-                borderRadius: '1rem',
-                paddingTop: '1rem',
+                borderRadius: '0 0 1rem 0',
+                padding: '1rem 0 1rem 0',
                 overflowX: 'hidden',
                 overflowY: 'auto',
+                position: 'absolute',
+                right: '7.5rem',
+                top: '3.5rem',
               }),
               menuList: (base) => ({
                 ...base,
@@ -169,6 +181,9 @@ function App() {
           <Route path="/aplikacja-offshore/narzedziecopy/*" element={<NarzedzieCopy toolData={data["conditionTool"]}/>} />
         </Routes>
       </main>
+      <footer>
+        <img src={logo_ciop} alt="kask" />
+      </footer>
     </div>
   )
 }

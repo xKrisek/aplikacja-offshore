@@ -11,7 +11,6 @@
 
 #narzedzie_button_blue {
     background-color: #78afbd;
-    font-weight: bold;
 }
 
 #narzedzie_button_gray {
@@ -26,7 +25,7 @@
     box-shadow: 0 0 20px gray;
     border-radius: 2rem;
     padding: 1rem 1rem 2rem 1rem;
-    height: 85%;
+    height: 75vh;
     text-align: center;
     align-content: center;
     overflow-y: auto;
@@ -89,7 +88,7 @@ tr {
 
 .menu h3{
     background-color: #ddd;
-    width: 80%;
+    width: 85%;
     margin: 2rem auto 0;
     line-height: 2.5rem;
     border-radius: 1rem 1rem 0 0;
@@ -106,12 +105,15 @@ tr {
 
 .menu ul{
     list-style: none;
-    width: 80%;
+    width: 85%;
     margin: auto;
     padding: 0.5rem 0 1rem;
     border-radius: 0 0 1rem 1rem;
     background-color: #eee;
-    overflow: visible;
+}
+
+.menu ul::-webkit-scrollbar{
+    display: none;
 }
 
 .menu li{
@@ -139,8 +141,30 @@ tr {
 }
 
 .read+ul{
-    background-color: #aad4de;
+    background-image: linear-gradient(#aad4de, #aad4de, #aad4de, hsl(192, 44%, 73%));
     box-shadow: 0 0 10px gray;
+    margin-bottom: 2rem;
+}
+
+.total-categs-wrapper{
+    height: 75%;
+    overflow-y: scroll;
+    padding-bottom: -2rem;
+}
+
+.total-categs-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.shadow{
+    width: 95%;
+    height: 2rem;
+    border: none;
+    color: lightgray;
+    box-shadow: 0 -2rem 20px lightgray;
+    overflow: visible;
+    position: relative;
+    z-index: 5;
 }
 
 .categ-hidden{
@@ -208,12 +232,14 @@ tr {
     left: 50%;
     transform: translateX(-50%);
     background-color: #78afbd;
+    text-shadow: 0 0 10px white;
     padding: 1rem 2rem;
     border-radius: 1rem;
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
     cursor: pointer;
+    z-index: 10;
 }
 
 #submit-condition-btn:hover{
@@ -226,6 +252,7 @@ tr {
     box-shadow: none;
     cursor: not-allowed;
     background-color: #969696;
+    text-shadow: none;
 }
 
 #check-btn{
