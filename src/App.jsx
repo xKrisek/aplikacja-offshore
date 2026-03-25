@@ -26,7 +26,6 @@ function App() {
   document.getElementById('root')
 
   const [showLang, setShowLang] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(false);
 
   const { Option } = components;
   const IconOption = (props) => (
@@ -48,12 +47,8 @@ function App() {
     </SingleValue>
   )
 
-  useEffect(() => {
-    console.log(showLang)
-  }, [showLang]);
-
   return (
-    <div className={darkTheme ? "bg-dark bg" : "bg"}>
+    <div className="bg">
       <header>
         <h1>OFF-SHORE SAFETY</h1>
         <nav>

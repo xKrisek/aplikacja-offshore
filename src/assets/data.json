@@ -111,48 +111,67 @@
                 }
             },
             "Okulary, gogle, osłony twarzy": {
-                "Ocena stanu skorupy": {
+                "Ocena wizjerów / soczewek": {
                     "symptoms": {
-                        "Odkształcenia":{
+                        "Pęknięcia powierzchniowe":{
                             "points": 123,
-                            "information": "eoeo123"
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
-                        "Zmiany koloru":{
+                        "Zmatowienia i odbarwienia":{
                             "points": 321,
-                            "information": "eoeo321"
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
-                        "": {
-                            
+                        "Zarysowania":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Łuszczenie się (rozwarstwianie)":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Nadmierne parowanie":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
                     }
                 },
-                "Ocena stanu więźby i zaczepów": {
+                "Ocena elementów konstrukcyjnych": {
                     "symptoms": {
-                        "Odkształcenia":{
+                        "Odkształcenia ":{
                             "points": 123,
-                            "information": "eoeo123"
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
-                        "Zmiany koloru":{
+                        "Pęknięcia powierzchniowe":{
                             "points": 321,
-                            "information": "eoeo321"
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
-                        "": {
-                            
+                        "Niepoprawne działanie zawiasów":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
                     }
                 },
-                "Ocena stanu paska podbródkowego": {
+                "Ocena stanu ochrony bocznej": {
                     "symptoms": {
-                        "Odkształcenia":{
+                        "Pęknięcia powierzchniowe":{
                             "points": 123,
-                            "information": "eoeo123"
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
-                        "Zmiany koloru":{
+                        "Nieszczelności podczas noszenia":{
                             "points": 321,
-                            "information": "eoeo321"
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Ocena stabilności i utrzymania na głowie": {
+                    "symptoms": {
+                        "Niestabilne, spadają podczas noszenia":{
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
-                        "": {
-                            
+                        "System regulacji nie działa poprawnie":{
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
                     }
                 }

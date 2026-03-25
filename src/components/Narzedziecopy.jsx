@@ -6,11 +6,22 @@ function NarzedzieCopy({toolData}) {
 
     const [uncoveredH3, setUncoveredH3] = useState("");
     const [toolPath, setToolPath] = useState("");
+    const [categs, setCategs] = useState(0);
+    const [openedCategs, setOpenedCategs] = useState(0);
+
     useEffect(() => {
-        return () => {
-            console.log(toolPath)
-        };
-    }, [toolPath]);
+        const paths = toolPath.split('/');
+
+        if (paths.length <= 2) {
+            setOpenedCategs(0);
+        }
+        if (paths.length >= 2 && paths[0] !== "" && toolData[paths[0]]?.[paths[1]]) {
+            const count = Object.keys(toolData[paths[0]][paths[1]]).length;
+            setCategs(count);
+        } else {
+            setCategs(0);
+        }
+    }, [toolPath, toolData]);
 
     return(
         <div className='narzedzie_container'>
@@ -26,7 +37,9 @@ function NarzedzieCopy({toolData}) {
                                 setUncoveredH3(key)
                             }}>{key} <BsCaretDown className={uncoveredH3 == key ? 'uncover-arrow rotated-arrow' : 'uncover-arrow'}/></h3>
                             <ul className={uncoveredH3 != key ? "categ-hidden" : "" }>{Object.entries(items).map(([key2, items2]) => (
-                                <li onClick={() => setToolPath(key+'/'+key2)} key={key2}>{key2}</li>
+                                <li onClick={() => {
+                                    setToolPath(key+'/'+key2);
+                                }} key={key2}>{key2}</li>
                             ))}</ul>
                         </div>
                     ))}
@@ -39,26 +52,34 @@ function NarzedzieCopy({toolData}) {
                             <h3 onClick={(e) => {
                                 uncoveredH3 == key ? 
                                 setUncoveredH3("") :
-                                setUncoveredH3(key)
-                                e.target.className = "read"
+                                setUncoveredH3(key);
+                                if(e.target.className != "read"){
+                                    setOpenedCategs(openedCategs + 1);
+                                }
+                                e.target.className = "read";
                             }}>{key} <BsCaretDown className={uncoveredH3 == key ? 'uncover-arrow rotated-arrow' : 'uncover-arrow'}/></h3>
-                            <ul className={uncoveredH3 != key ? "categ-hidden" : "" }>{Object.entries(items["symptoms"]).map(([key2, items2]) => (
+                            <ul className={uncoveredH3 != key ? "categ-hidden" : "" }>
+                                {Object.entries(items["symptoms"]).map(([key2, items2]) => (
                                 <li onClick={() => {
-                                    if(toolPath.split('/').length < 4){
-                                        setToolPath([...toolPath.split('/'), key, key2].join('/'));
-                                    }else{
-                                        setToolPath([...toolPath.split('/').splice(0,2), key, key2].join('/'))
-                                    }
-                                }} key={key2}>{key2}</li>
-                            ))}</ul>
+                                        if(toolPath.split('/').length < 4){
+                                            setToolPath([...toolPath.split('/'), key, key2].join('/'));
+                                        }else{
+                                            setToolPath([...toolPath.split('/').splice(0,2), key, key2].join('/'))
+                                        }
+                                    }} key={key2}>{key2}
+                                </li>
+                                ))}
+                            </ul>
                         </div>
                     ))}
-                    <div id='submit-condition-btn'>Sprawdź stan techniczny</div>
+                    <div id='submit-condition-btn' className={openedCategs == categs ? "" : "disable"}
+                    >Sprawdź stan techniczny</div>
                 </>
                } 
                 
             </div>
-            <div className='information'>
+            <div className='right-panel'>
+                <div className="information">
                 {
                     toolPath.split('/').length == 4 ?
                     <>
@@ -73,6 +94,7 @@ function NarzedzieCopy({toolData}) {
                     EOEO
                     </>
                 }
+                </div>
             </div>
         </div>
     )

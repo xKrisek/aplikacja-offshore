@@ -157,14 +157,20 @@ tr {
 }
 
 .information{
-    width: calc(50% - 1rem);
+    width: 100%;
     height: 100%;
     text-align: justify;
     float: left;
     background-color: white;
-    margin: -1rem -1rem -2rem 0;
     border-radius: 0 2rem 2rem 0;
-    padding: 1rem 1rem 2rem 1rem;
+}
+
+.right-panel{
+    width: calc(50% - 1rem);
+    height: calc(100% + 1rem);
+    float: left;
+    margin: -1rem -1rem -2rem 0;
+    padding: 1rem;
     position: relative;
 }
 
@@ -215,8 +221,15 @@ tr {
     box-shadow: 0 0 10px #5c5c5c;
 }
 
+#submit-condition-btn.disable{
+    transform: scale(1) translateX(-50%) !important;
+    box-shadow: none;
+    cursor: not-allowed;
+    background-color: #969696;
+}
+
 #check-btn{
-    width: 35%;
+    width: 40%;
     cursor: pointer;
     position: absolute;
     bottom: 2rem;
@@ -225,15 +238,36 @@ tr {
     background-color: #78afbd;
     padding: 1rem;
     border-radius: 1rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+#check-btn:hover, #continue-btn:hover{
+    scale: 1.1;
+    box-shadow: 0 0 10px #5c5c5c;
 }
 
 #check-btn input[type="checkbox"]{
-    padding: 0;
-    margin: 0;
+    transform: scale(1.5);
+    border: none;
+    margin: 0 1rem -0.2rem 0.2rem;
+    background-color: white;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+#check-btn input[type="checkbox"]:checked::after{
+    content: "✖";
+}
+
+#check-btn:hover input[type="checkbox"]{
+    box-shadow: inset 0 0 5px gray;
 }
 
 #continue-btn{
-    width: 35%;
+    width: 30%;
     cursor: pointer;
     position: absolute;
     bottom: 2rem;
@@ -242,6 +276,10 @@ tr {
     background-color: #78afbd;
     padding: 1rem;
     border-radius: 1rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.15rem;
 }
 
 input[type="checkbox"] {
