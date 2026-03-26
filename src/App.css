@@ -8,7 +8,7 @@ html::-webkit-scrollbar{
 
 .bg{
   width: 100%;
-  min-height: 100vh;
+  min-height: 130vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@ html::-webkit-scrollbar{
 }
 
 footer{
-  min-height: 10vh;
+  min-height: 30vh;
   background-color: lightgray;
   padding: 0;
   margin: 0;
@@ -88,7 +88,7 @@ nav{
 
 main {
   margin-top: 10vh;
-  min-height: 90vh;
+  min-height: 100vh;
   overflow: auto;
 }
 

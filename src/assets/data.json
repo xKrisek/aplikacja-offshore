@@ -52,26 +52,32 @@
                 "Ocena stanu skorupy": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 100,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 100,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Pęknięcia":{
+                            "hasRange": 1,
                             "points": 100,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Głębokie otarcia":{
+                            "hasRange": 1,
                             "points": 100,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Odpryski":{
+                            "hasRange": 1,
                             "points": 100,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Wyszczerbienia":{
+                            "hasRange": 1,
                             "points": 100,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -80,14 +86,17 @@
                 "Ocena stanu więźby i zaczepów": {
                     "symptoms": {
                         "Osłabienie połączeń":{
+                            "hasRange": 1,
                             "points": 1,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie więźby":{
+                            "hasRange": 1,
                             "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie szwów":{
+                            "hasRange": 1,
                             "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -96,14 +105,17 @@
                 "Ocena stanu paska podbródkowego": {
                     "symptoms": {
                         "Uszkodzenie zaczepów":{
+                            "hasRange": 1,
                             "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie regulacji":{
+                            "hasRange": 1,
                             "points": 1,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Uszkodzenie zapięć":{
+                            "hasRange": 1,
                             "points": 2,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -114,22 +126,27 @@
                 "Ocena wizjerów / soczewek": {
                     "symptoms": {
                         "Pęknięcia powierzchniowe":{
+                            "hasRange": 0,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Zmatowienia i odbarwienia":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Zarysowania":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Łuszczenie się (rozwarstwianie)":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Nadmierne parowanie":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -138,14 +155,17 @@
                 "Ocena elementów konstrukcyjnych": {
                     "symptoms": {
                         "Odkształcenia ":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Pęknięcia powierzchniowe":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Niepoprawne działanie zawiasów":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -154,10 +174,12 @@
                 "Ocena stanu ochrony bocznej": {
                     "symptoms": {
                         "Pęknięcia powierzchniowe":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "Nieszczelności podczas noszenia":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -166,10 +188,12 @@
                 "Ocena stabilności i utrzymania na głowie": {
                     "symptoms": {
                         "Niestabilne, spadają podczas noszenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         },
                         "System regulacji nie działa poprawnie":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
                         }
@@ -180,10 +204,12 @@
                 "Ocena stanu skorupy": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "eoeo123"
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "eoeo321"
                         },
@@ -195,10 +221,12 @@
                 "Ocena stanu więźby i zaczepów": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "eoeo123"
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "eoeo321"
                         },
@@ -210,10 +238,12 @@
                 "Ocena stanu paska podbródkowego": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "eoeo123"
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "eoeo321"
                         },
@@ -227,10 +257,12 @@
                 "Ocena stanu skorupy": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "eoeo123"
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "eoeo321"
                         },
@@ -242,10 +274,12 @@
                 "Ocena stanu więźby i zaczepów": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "eoeo123"
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "eoeo321"
                         },
@@ -257,10 +291,12 @@
                 "Ocena stanu paska podbródkowego": {
                     "symptoms": {
                         "Odkształcenia":{
+                            "hasRange": 1,
                             "points": 123,
                             "information": "eoeo123"
                         },
                         "Zmiany koloru":{
+                            "hasRange": 1,
                             "points": 321,
                             "information": "eoeo321"
                         },

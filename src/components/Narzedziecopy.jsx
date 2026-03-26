@@ -3,105 +3,227 @@ import { useEffect, useState } from 'react';
 import { BsArrowReturnLeft, BsCaretDown } from "react-icons/bs";
 
 function NarzedzieCopy({toolData}) {
-
     const [uncoveredH3, setUncoveredH3] = useState("");
     const [toolPath, setToolPath] = useState("");
     const [categs, setCategs] = useState(0);
-    const [openedCategs, setOpenedCategs] = useState(0);
+    const [openedCategs, setOpenedCategs] = useState([]);
+    const [testPoints, setTestPoints] = useState({});
+
+    const pathParts = toolPath.split(';-;');
+    const mainKey = pathParts[0];
+    const toolKey = pathParts[1];
+    const currentCatKey = pathParts[2];
+    const symptomKey = pathParts[3];
+    const isSymptomView = pathParts.length === 4;
+    const isToolSelected = pathParts.length >= 2;
+
+    const symptomData = isSymptomView ? toolData[mainKey]?.[toolKey]?.[currentCatKey]?.["symptoms"]?.[symptomKey] : null;
+    const currentPointState = isSymptomView ? testPoints[currentCatKey]?.[symptomKey] : null;
+    const allCategories = isSymptomView ? Object.keys(toolData[mainKey][toolKey]) : [];
+    const currentCatSymptoms = isSymptomView ? Object.keys(toolData[mainKey][toolKey][currentCatKey].symptoms).filter(s => s !== "") : [];
+    const isLastCategory = isSymptomView && allCategories.indexOf(currentCatKey) === allCategories.length - 1;
+    const isLastSymptom = isSymptomView && currentCatSymptoms.indexOf(symptomKey) === currentCatSymptoms.length - 1;
 
     useEffect(() => {
-        const paths = toolPath.split(';-;');
-
-        if (paths.length <= 2) {
-            setOpenedCategs(0);
-        }
-        if (paths.length >= 2 && paths[0] !== "" && toolData[paths[0]]?.[paths[1]]) {
-            const count = Object.keys(toolData[paths[0]][paths[1]]).length;
-            setCategs(count);
-        } else {
+        if (!isToolSelected) {
+            setOpenedCategs([]);
+            setTestPoints({});
             setCategs(0);
+            return;
         }
 
-        console.log(toolPath)
+        const selectedTool = toolData[mainKey]?.[toolKey];
+
+        if (selectedTool) {
+            const categoryKeys = Object.keys(selectedTool);
+            setCategs(categoryKeys.length);
+            
+            const initialPoints = {};
+            categoryKeys.forEach(catKey => {
+                initialPoints[catKey] = {};
+                const symptoms = selectedTool[catKey].symptoms;
+                
+                if (symptoms) {
+                    Object.entries(symptoms).forEach(([sKey, data]) => {
+                        if (sKey !== "") {
+                            initialPoints[catKey][sKey] = {
+                                points: data.points || 0,
+                                multiplier: 0 
+                            };
+                        }
+                    });
+                }
+            });
+
+            setTestPoints(prev => {
+            const prevKeys = Object.keys(prev);
+            const newKeys = Object.keys(initialPoints);
+            if (prevKeys.length === 0 || prevKeys[0] !== newKeys[0]) {
+                return initialPoints;
+            }
+            return prev;
+        });
+        }
     }, [toolPath, toolData]);
 
-    return(
+    const handleNext = () => {
+        const categorySymptoms = toolData[mainKey]?.[toolKey]?.[currentCatKey]?.symptoms;
+        if (!categorySymptoms) return;
+
+        const symptomKeys = Object.keys(categorySymptoms).filter(k => k !== "");
+        const currentIndex = symptomKeys.indexOf(symptomKey);
+
+        if (currentIndex < symptomKeys.length - 1) {
+            const nextSymptom = symptomKeys[currentIndex + 1];
+            setToolPath([mainKey, toolKey, currentCatKey, nextSymptom].join(';-;'));
+        } 
+        else {
+            const allCategories = Object.keys(toolData[mainKey][toolKey]);
+            const currentCatIndex = allCategories.indexOf(currentCatKey);
+
+            if (currentCatIndex < allCategories.length - 1) {
+                const nextCat = allCategories[currentCatIndex + 1];
+                const nextCatFirstSymptom = Object.keys(toolData[mainKey][toolKey][nextCat].symptoms)[0];
+                
+                setUncoveredH3(nextCat);
+                if (!openedCategs.includes(nextCat)) {
+                    setOpenedCategs(prev => [...prev, nextCat]);
+                }
+                setToolPath([mainKey, toolKey, nextCat, nextCatFirstSymptom].join(';-;'));
+            } else {
+                setToolPath([mainKey, toolKey].join(';-;'));
+                setUncoveredH3("")
+            }
+        }
+    };
+
+    return (
         <div className='narzedzie_container'>
             <div className='menu'>
-                {toolPath.split(';-;').length < 2 ? 
+                {!isToolSelected ? 
                 <>
                     <h2>Wybierz ŚOI do sprawdzenia</h2><hr/>
                     <div>
-                    {Object.entries(toolData).map(([key, items]) => (
-                        <div className='categ-wrapper' key={key}>
-                            <h3 onClick={() => {
-                                uncoveredH3 == key ? 
-                                setUncoveredH3("") :
-                                setUncoveredH3(key)
-                            }}>{key} <BsCaretDown className={uncoveredH3 == key ? 'uncover-arrow rotated-arrow' : 'uncover-arrow'}/></h3>
-                            <ul className={uncoveredH3 != key ? "categ-hidden" : "" }>{Object.entries(items).map(([key2, items2]) => (
-                                <li onClick={() => {
-                                    setToolPath(key+';-;'+key2);
-                                }} key={key2}>{key2}</li>
-                            ))}</ul>
-                        </div>
-                    ))}
+                        {Object.entries(toolData).map(([key, items]) => (
+                            <div className='categ-wrapper' key={key}>
+                                <h3 onClick={() => uncoveredH3 === key ? setUncoveredH3("") : setUncoveredH3(key)}>
+                                    {key} <BsCaretDown className={uncoveredH3 === key ? 'uncover-arrow rotated-arrow' : 'uncover-arrow'}/>
+                                </h3>
+                                <ul className={uncoveredH3 !== key ? "categ-hidden" : "" }>
+                                    {Object.entries(items).map(([key2]) => (
+                                        <li onClick={() => setToolPath(key + ';-;' + key2)} key={key2}>{key2}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </>
                 :
                 <>
-                    <BsArrowReturnLeft onClick={() => setToolPath("")} className='return-arrow'/><h2>{toolPath.split(';-;')[1]}</h2><hr/>
+                    <BsArrowReturnLeft onClick={() => setToolPath("")} className='return-arrow'/>
+                    <h2>{toolKey}</h2><hr/>
                     <div className='shadow' style={{transform: 'scale(1, -1)'}}/>
                     <div className='total-categs-wrapper'>
-                    {Object.entries(toolData[toolPath.split(';-;')[0]][toolPath.split(';-;')[1]]).map(([key, items]) => (
-                        <div className='categ-wrapper' key={key}>
-                            <h3 onClick={(e) => {
-                                uncoveredH3 == key ? 
-                                setUncoveredH3("") :
-                                setUncoveredH3(key);
-                                if(e.target.className != "read"){
-                                    setOpenedCategs(openedCategs + 1);
-                                }
-                                e.target.className = "read";
-                            }}>{key} <BsCaretDown className={uncoveredH3 == key ? 'uncover-arrow rotated-arrow' : 'uncover-arrow'}/></h3>
-                            <ul className={uncoveredH3 != key ? "categ-hidden" : "" }>
-                                {Object.entries(items["symptoms"]).map(([key2, items2]) => (
-                                <li onClick={() => {
-                                        if(toolPath.split(';-;').length < 4){
-                                            setToolPath([...toolPath.split(';-;'), key, key2].join(';-;'));
-                                        }else{
-                                            setToolPath([...toolPath.split(';-;').splice(0,2), key, key2].join(';-;'))
-                                        }
-                                    }} key={key2}>{key2}
-                                </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                        {Object.entries(toolData[mainKey][toolKey]).map(([key, items]) => (
+                            <div className='categ-wrapper' key={key}>
+                                <h3 className={openedCategs.includes(key) ? "read" : ""} 
+                                    onClick={() => {
+                                        uncoveredH3 === key ? setUncoveredH3("") : setUncoveredH3(key);
+                                        if (!openedCategs.includes(key)) setOpenedCategs([...openedCategs, key]);
+                                    }}>
+                                    {key}
+                                    <BsCaretDown className={uncoveredH3 === key ? 'uncover-arrow rotated-arrow' : 'uncover-arrow'}/>
+                                </h3>
+                                <ul className={uncoveredH3 !== key ? "categ-hidden" : "" }>
+                                    {Object.keys(testPoints).length > 0 && Object.entries(items["symptoms"]).map(([sKey]) => (
+                                        <li className={[testPoints[key]?.[sKey]?.multiplier > 0 ? "checked" : "",
+                                            (symptomKey === sKey && currentCatKey === key) ? "bold" : ""
+                                            ].join(' ').trim()} key={sKey}
+                                            onClick={() => setToolPath([mainKey, toolKey, key, sKey].join(';-;'))}
+                                        >
+                                            {sKey}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                     <div className='shadow'/>
-                    <div id='submit-condition-btn' className={openedCategs == categs ? "" : "disable"}
-                    >Sprawdź stan techniczny</div>
+                    <div id='submit-condition-btn' className={openedCategs.length === categs && categs > 0 ? "" : "disable"}>
+                        Sprawdź stan techniczny
+                    </div>
                 </>
-               } 
-                
+                } 
             </div>
+
             <div className='right-panel'>
                 <div className="information">
-                {
-                    toolPath.split(';-;').length == 4 ?
+                    {isSymptomView ?
                     <>
-                        <h2>{toolPath.split(';-;').splice(1,3).join(';-;')}</h2>
-                        <p>{toolData[toolPath.split(';-;')[0]][toolPath.split(';-;')[1]][toolPath.split(';-;')[2]]["symptoms"][toolPath.split(';-;')[3]]["information"]}</p>
+                        <div className='information-content'>
+                            <h3>{toolKey} / {currentCatKey}</h3>
+                            <h2>{symptomKey}</h2>
+                            <p>{symptomData?.information}</p>
+                        </div>
                         
-                        <label htmlFor='check' id='check-btn'><input type='checkbox' id='check'/>Zaznacz symptom</label>
-                        <div id='continue-btn'>Dalej</div>
+                        <label htmlFor='check' id='check-btn'>
+                            <input type='checkbox' id='check' checked={!!currentPointState?.multiplier} 
+                                onChange={(e) => {
+                                    const isChecked = e.target.checked;
+                                    const newMultiplier = isChecked ? (symptomData?.hasRange === 1 ? 0.1 : 1) : 0;
+
+                                    setTestPoints(prev => ({
+                                        ...prev,
+                                        [currentCatKey]: {
+                                            ...prev[currentCatKey],
+                                            [symptomKey]: {
+                                                ...prev[currentCatKey][symptomKey],
+                                                multiplier: newMultiplier
+                                            }
+                                        }
+                                    }));
+                                }}
+                            />
+                            Zaznacz symptom 
+                        </label>
+
+                        {symptomData?.hasRange === 1 && (
+                            <div id='symptom-range' style={{ opacity: currentPointState?.multiplier > 0 ? 1 : 0 }}>
+                                <p>Nasilenie</p>
+                                <div className='range-wrapper' style={{ '--range-pos': `${(Math.round((currentPointState?.multiplier || 0.1) * 10) - 1) * 11.11}%`,
+                                                                        '--green-color': `${currentPointState?.multiplier}`}}>
+                                    
+                                    <div className="range-bubble">
+                                        {Math.round((currentPointState?.multiplier || 0) * 10)}
+                                    </div>
+
+                                    <input 
+                                        type='range' 
+                                        min={1} 
+                                        max={10} 
+                                        step={1}
+                                        value={Math.round((currentPointState?.multiplier || 0) * 10) || 1}
+                                        onChange={(e) => {
+                                            setTestPoints(prev => ({
+                                                ...prev,
+                                                [currentCatKey]: {
+                                                    ...prev[currentCatKey],
+                                                    [symptomKey]: {
+                                                        ...prev[currentCatKey][symptomKey],
+                                                        multiplier: parseInt(e.target.value) / 10
+                                                    }
+                                                }
+                                            }));
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        <div id='continue-btn' onClick={handleNext}>{isLastSymptom && isLastCategory ? "Zakończ badanie" : "Dalej"}</div>
                     </>
                     :
-                    <>
-                    EOEO
-                    </>
-                }
+                    <div className='empty-info'>Wybierz symptom z listy po lewej, aby rozpocząć ocenę.</div>
+                    }
                 </div>
             </div>
         </div>
