@@ -204,7 +204,7 @@ function NarzedzieCopy({data}) {
                             <input type='checkbox' id='check' checked={!!currentPointState?.multiplier} 
                                 onChange={(e) => {
                                     const isChecked = e.target.checked;
-                                    const newMultiplier = isChecked ? (symptomData?.hasRange === 1 ? 0.1 : 1) : 0;
+                                    const newMultiplier = isChecked ? 1 : 0;
 
                                     setTestPoints(prev => ({
                                         ...prev,
@@ -236,7 +236,7 @@ function NarzedzieCopy({data}) {
                                         min={1} 
                                         max={10} 
                                         step={1}
-                                        value={Math.round((currentPointState?.multiplier || 0) * 10) || 1}
+                                        value={Math.round((currentPointState?.multiplier || 0) * 10) || 10}
                                         onChange={(e) => {
                                             setTestPoints(prev => ({
                                                 ...prev,
@@ -256,10 +256,25 @@ function NarzedzieCopy({data}) {
                         <div id='continue-btn' onClick={handleNext}>{isLastSymptom && isLastCategory ? "Zakończ badanie" : "Dalej"}</div>
                     </>
                     :
-                    endOfTest ?
-                        <div className='information-message'><b>Wypełniłeś formularz</b><br/>aby poznać wynik kliknij przycisk po lewej<br/><BsArrowDownLeft /></div>
+                    <div className='information-message'>
+                        { !isToolSelected ?
+                            <><h3>Narzędzie do oceny stanu technicznego ŚOI</h3><hr/>
+                            Wybierz ŚOI z listy po lewej stronie i wypełnij formularz, aby sprawdzić stan techniczny swojego środka ochrony.</>
                         :
-                        <div className='information-message'></div>
+                            <>
+                                {endOfTest ? 
+                                    <>
+                                    <h3>Narzędzie do oceny stanu technicznego ŚOI</h3><hr/>
+                                    Skończyłeś wypełnianie formularza. Aby poznać wynik kliknij przycisk po lewej.<BsArrowDownLeft/></>
+                                :
+                                    <>
+                                    <h3>Narzędzie do oceny stanu technicznego ŚOI</h3><hr/>
+                                    Aby poznać wynik przejrzyj wpierw wszystkie kategorie, zaznacz wszystkie występujące symptomy z listy i określ ich nasilenie.
+                                    </>
+                                }
+                            </>
+                        }
+                    </div>
                     }
                 </div>
             </div>
@@ -272,7 +287,7 @@ function NarzedzieCopy({data}) {
                             <b>({toolKey})</b>
                             {data["textUI"][result]["text"].split(';-;')[1]}
                             
-                            <button value={"OK"}/>
+                            <button className={result} onClick={() => setToolPath("")}>OK</button>
                         </p>}
                     </div>
                 </div>

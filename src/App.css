@@ -90,6 +90,7 @@ main {
   margin-top: 10vh;
   min-height: 100vh;
   overflow: auto;
+  transition: all 0.2s ease-in-out;
 }
 
 #main-site-desc{
@@ -166,10 +167,12 @@ nav img{
 
 nav a{
  width: 22.5%;
+ height: calc(5rem-30px);
  margin: 15px 5%;
  background-color: lightgray;
  text-align: center;
  border-radius: 0 1rem 0 1rem;
+ overflow: hidden;
 }
 
 header a:hover, .selected-location{

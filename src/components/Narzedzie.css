@@ -219,6 +219,7 @@ tr {
 
 .information-content h3{
     text-align: left;
+    margin: 0;
 }
 
 .information::-webkit-scrollbar{
@@ -227,24 +228,28 @@ tr {
 
 .information-message{
     width: 65%;
-    height: 40%;
-    padding: 3rem 2rem;
+    min-height: 10%;
+    padding: 2rem;
     border-radius: 2rem;
     position: absolute;
     top: 50%;
     left: 50%;
     background-color: lightgray;
     box-shadow: -10px 10px 30px gray;
-    text-align: center;
-    font-size: 1.3rem;
+    text-align: left;
+    font-size: 1.1rem;
     transform: translate(-50%, -50%);
 }
 
 .information-message svg{
-    font-size: 128px;
+    font-size: 6rem;
     stroke-width: 2px;
     color: darkgray;
-    margin-top: 4rem;
+    margin-top: 1rem;
+}
+
+.information-message h3{
+    margin: 0;
 }
 
 #submit-msg{
@@ -263,9 +268,9 @@ tr {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 30%;
-    height: 25%;
-    overflow: hidden;
+    height: 20%;
     border-radius: 2rem;
+    box-shadow: 0 0 20px black;
 }
 
 #submit-msg p{
@@ -275,6 +280,8 @@ tr {
     height: 100%;
     margin: 0;
     font-size: 1.2rem;
+    border-radius: 0 0 2rem 2rem;
+    position: relative;
 }
 
 #submit-msg h3{
@@ -285,22 +292,43 @@ tr {
     text-align: center;
     font-size: 1.8rem;
     line-height: 4.5rem;
+    border-radius: 2rem 2rem 0 0;
+}
+
+#submit-msg button{
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    border-radius: 2rem;
+    border: 0;
+    line-height: 0.5rem;
+    padding: 0;
+    height: 3rem;
+    width: 5rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#submit-msg button:hover{
+    box-shadow: 0 0 10px gray;
+    transition: all 0.2s ease-in-out;
 }
 
 #submit-msg .k{
-    background-color: rgb(165, 9, 9);
+    background-color: rgb(146, 15, 44);
     color: white;
 }
 
 #submit-msg .s{
-    background-color: rgb(165, 9, 9);
-    color: white;
+    background-color: #ffb700;
+    color: black;
 }
 
 #submit-msg .d{
     background-color: rgb(59, 179, 79);
     color: white;
-    
 }
 
 .rotated-arrow{
