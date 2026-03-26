@@ -12,7 +12,8 @@ import languageSvg from './assets/language.svg'
 import polandFlag from './assets/poland-flag-icon.svg'
 import germanyFlag from './assets/germany-flag-icon.svg'
 import britainFlag from './assets/britain-flag-icon.svg'
-import logo_ciop from './assets/kask.png'
+import logo_ciop from './assets/ciop.png'
+import logo_ncbr from './assets/ncbr.jpg'
 import data from './assets/data.json'
 import { BsChevronCompactLeft } from "react-icons/bs";
 
@@ -57,6 +58,7 @@ function App() {
             to="/aplikacja-offshore/" 
             end
             className={({ isActive }) => isActive ? 'selected-location' : ''}
+            onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
               <img src={homepageSvg} alt="Home" />
@@ -67,6 +69,7 @@ function App() {
           <NavLink 
             to="/aplikacja-offshore/baza-wiedzy" 
             className={({ isActive }) => isActive ? 'selected-location' : ''}
+            onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
               <img src={bazaWiedzySvg} alt="Baza" />
@@ -77,6 +80,7 @@ function App() {
           <NavLink 
             to="/aplikacja-offshore/narzedzie" 
             className={({ isActive }) => isActive ? 'selected-location' : ''}
+            onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
                <img src={ocenaStanuTechSvg} alt="Narzędzie" /> 
@@ -87,6 +91,7 @@ function App() {
           <NavLink  
             to="/aplikacja-offshore/narzedziecopy" 
             className={({ isActive }) => isActive ? 'selected-location koncept2' : 'koncept2' }
+            onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
                <img src={ocenaStanuTechSvg} alt="Narzędzie (koncept 2)" /> 
@@ -182,7 +187,40 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <img src={logo_ciop} alt="kask" />
+        <div className='footer_img'>
+          <a href="https://www.ciop.pl" target="_blank" rel="noopener noreferrer"><img src={logo_ciop} alt="CIOP_PIB" /></a>
+          <a href="https://www.ncbr.gov.pl" target="_blank" rel="noopener noreferrer"><img src={logo_ncbr}alt="NCBR" /></a>
+        </div>
+        <table className='footer_table'>
+          <thead>
+            <tr>
+              <th>OFF-SHORE SAFETY</th>
+              <th>Szybkie linki</th>
+              <th>Kontakt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Narzędzie wspierające ocenę i decyzyjność w zakresie ŚOI.</p></td>
+              <td>
+                <p><a href="/aplikacja-offshore/baza-wiedzy" target="_blank" rel="noopener noreferrer">Baza wiedzy</a></p>              
+              </td>
+              <td>
+                <p>Email: przykład@email.com</p>
+              </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><p><a href="/aplikacja-offshore/narzedzie" target="_blank" rel="noopener noreferrer">Narzędzie</a></p></td>
+                <td><p>Telefon: +48 XXX XXX XXX</p></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><p><a href="/aplikacja-offshore/narzedziecopy" target="_blank" rel="noopener noreferrer">Narzędzie (koncept 2)</a></p></td>
+                <td></td>
+            </tr>
+          </tbody>
+        </table>
       </footer>
     </div>
   )

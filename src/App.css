@@ -22,11 +22,40 @@ html::-webkit-scrollbar{
 
 footer{
   min-height: 10vh;
-  background-color: red;
+  background-color: lightgray;
   padding: 0;
   margin: 0;
 }
 
+footer img{
+  height: 80px;
+  margin: 2rem 10rem;
+}
+
+.footer_img {
+  width: 100%;
+  text-align: center;
+}
+
+.footer_table{
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.footer_table th, .footer_table td {
+  width: 33.33%;
+}
+
+td {
+  text-align: center;
+  line-height: 5vh;
+}
+
+footer a{
+  text-decoration: none;
+  color: black;
+}
 
 .bg-dark{
   background-image: url('./assets/bg-dark-2.svg') !important;
