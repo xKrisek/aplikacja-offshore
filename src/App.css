@@ -175,19 +175,23 @@ nav a{
  overflow: hidden;
 }
 
-header a:hover, .selected-location{
+header nav a:hover, .selected-location{
   scale: 115%;
   box-shadow: 0 0 10px gray;
+}
+
+#main-site-desc{
+  padding: 2rem;
+  background-image: linear-gradient(135deg, lightgray, transparent);
+  border-radius: 2rem;
+  width: 100%;
+  height: 100%;
+  box-shadow: 10px 10px 20px linear-gradient(135deg, #fff, transparent, transparent, transparent);
 }
 
 .selected-location{
   background-color: #ddd;
   font-weight: bold;
-}
-
-.koncept2.selected-location{
-  transform: scale(1,1);
-  scale: 115%;
 }
 
 header a p{
@@ -207,6 +211,20 @@ header h1{
   letter-spacing: 0.5rem;
   color: black;
   text-shadow: -4px 4px white;
+  float: left;
+}
+
+header h1 img{
+  float: left;
+  height: 8rem;
+  margin-top: -1.8rem;
+  margin-left: -0.7rem;
+  filter: drop-shadow(-4px 4px white)
+}
+
+header h1:hover img{
+  transform: rotate(360deg);
+  transition: 0.5s ease-in-out;
 }
 
 .bg::-webkit-scrollbar{
@@ -227,12 +245,6 @@ button {
   nav { width: 100%; }
   .knowledge-base { width: 90%; }
   #main-site-desc { width: 80%; }
-}
-
-.koncept2{
-  position: fixed;
-  right: 6rem;
-  width: 15rem;
 }
 
 /* @media (min-width: 1800px) {

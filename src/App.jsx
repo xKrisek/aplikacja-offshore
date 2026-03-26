@@ -14,6 +14,7 @@ import germanyFlag from './assets/germany-flag-icon.svg'
 import britainFlag from './assets/britain-flag-icon.svg'
 import logo_ciop from './assets/ciop.png'
 import logo_ncbr from './assets/ncbr.jpg'
+import appLogo from './assets/logo.svg'
 import data from './assets/data.json'
 import { BsChevronCompactLeft } from "react-icons/bs";
 
@@ -52,19 +53,15 @@ function App() {
   return (
     <div className="bg">
       <header>
-        <h1>OFF-SHORE SAFETY</h1>
-        <nav>
+        <h1>
           <NavLink 
             to="/aplikacja-offshore/" 
             end
-            className={({ isActive }) => isActive ? 'selected-location' : ''}
             onClick={() => {window.scrollTo(0, 0)}}
           >
-            <div>
-              <img src={homepageSvg} alt="Home" />
-              <p>Strona główna</p>
-            </div>
-          </NavLink>
+            <img src={appLogo}/>OFF-SHORE<br/>SAFETY
+          </NavLink></h1>
+        <nav>
 
           <NavLink 
             to="/aplikacja-offshore/baza-wiedzy" 
@@ -90,7 +87,7 @@ function App() {
 
           <NavLink  
             to="/aplikacja-offshore/narzedziecopy" 
-            className={({ isActive }) => isActive ? 'selected-location koncept2' : 'koncept2' }
+            className={({ isActive }) => isActive ? 'selected-location' : '' }
             onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
@@ -177,9 +174,14 @@ function App() {
       <main>
         <Routes>
           <Route path="/aplikacja-offshore/" element={
-            <div id='main-site-desc'>
-              <h2><strong>Narzędzie wspierające decyzyjność</strong> w zakresie doboru i oceny stanu technicznego ŚOI stosowanych w obszarze off-shore i innych outdoorowych.</h2>
-            </div>
+            <>
+              <div id='main-site-desc'>
+                <h2><strong>Narzędzie wspierające decyzyjność</strong> w zakresie doboru i oceny stanu technicznego ŚOI stosowanych w obszarze off-shore i innych outdoorowych.</h2>
+              </div>
+              <div id='main-site-desc'/>
+              <div id='main-site-desc'/>
+              <div id='main-site-desc'/>
+            </>
           } />
           <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy baza={data["knowledgeBase"]} />} />
           <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie data={data["conditionTool"]} />} />
