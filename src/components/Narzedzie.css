@@ -196,6 +196,7 @@ tr {
     float: left;
     background-color: white;
     border-radius: 0 2rem 2rem 0;
+    position: relative;
 }
 
 .right-panel{
@@ -222,6 +223,84 @@ tr {
 
 .information::-webkit-scrollbar{
     visibility: visible;
+}
+
+.information-message{
+    width: 65%;
+    height: 40%;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: lightgray;
+    box-shadow: -10px 10px 30px gray;
+    text-align: center;
+    font-size: 1.3rem;
+    transform: translate(-50%, -50%);
+}
+
+.information-message svg{
+    font-size: 128px;
+    stroke-width: 2px;
+    color: darkgray;
+    margin-top: 4rem;
+}
+
+#submit-msg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000088;
+    z-index: 1000;
+}
+
+#submit-msg .wrapper{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 25%;
+    overflow: hidden;
+    border-radius: 2rem;
+}
+
+#submit-msg p{
+    padding: 1rem 2rem;
+    width: calc(100%-4rem);
+    background-color: lightgray;
+    height: 100%;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+#submit-msg h3{
+    padding: 0 2rem;
+    width: calc(100%-4rem);
+    margin: 0;
+    height: 4.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 4.5rem;
+}
+
+#submit-msg .k{
+    background-color: rgb(165, 9, 9);
+    color: white;
+}
+
+#submit-msg .s{
+    background-color: rgb(165, 9, 9);
+    color: white;
+}
+
+#submit-msg .d{
+    background-color: rgb(59, 179, 79);
+    color: white;
+    
 }
 
 .rotated-arrow{
@@ -265,11 +344,11 @@ tr {
     color: white;
     cursor: pointer;
     z-index: 10;
+    box-shadow: 0 0 10px #5c5c5c;
 }
 
 #submit-condition-btn:hover{
     transform: scale(1.1) translateX(-45%);
-    box-shadow: 0 0 10px #5c5c5c;
 }
 
 #submit-condition-btn.disable{
@@ -361,6 +440,7 @@ tr {
   border-radius: 0.5rem;
   height: 1.2rem;
   padding: 0.2rem;
+  width: 100%;
 }
 
 #symptom-range input[type="range"]::-webkit-slider-thumb {
@@ -370,6 +450,12 @@ tr {
   border-radius: 0.5rem;
   height: 0.8rem;
   width: 0.8rem;
+  transition: all 0.1s ease-in-out;
+}
+
+#symptom-range input[type="range"]::-webkit-slider-thumb:hover{
+    scale: 1.2;
+    box-shadow: white 0 0 1rem;
 }
 
 #symptom-range input[type="range"]:focus::-webkit-slider-thumb {
@@ -387,8 +473,8 @@ tr {
 
 .range-bubble {
     position: absolute;
-    top: -2.5rem;
-    left: calc(0.5rem + (var(--range-pos) * 0.92));
+    top: -1.8rem;
+    left: calc(0.6rem + (var(--range-pos) * 0.91));
     transform: translateX(-50%);
     transition: none;
     background: rgb(230, calc(230 * calc(1 - var(--green-color))), 100);

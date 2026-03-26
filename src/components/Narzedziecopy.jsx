@@ -1,20 +1,29 @@
 import './Narzedzie.css';
 import { useEffect, useState } from 'react';
-import { BsArrowReturnLeft, BsCaretDown } from "react-icons/bs";
+import { BsArrowReturnLeft, BsCaretDown, BsArrowDownLeft } from "react-icons/bs";
 
-function NarzedzieCopy({toolData}) {
+const GRANICE_PUNKTOWE = [100, 150]
+// INDEX 0 - granica średniego zużycia
+// INDEX 1 - granica krytycznego zużycia
+// <<<------------------------------------------------------------------------------------------------------------------------------------------
+
+function NarzedzieCopy({data}) {
+    const toolData = data["conditionTool"];
     const [uncoveredH3, setUncoveredH3] = useState("");
     const [toolPath, setToolPath] = useState("");
     const [categs, setCategs] = useState(0);
     const [openedCategs, setOpenedCategs] = useState([]);
     const [testPoints, setTestPoints] = useState({});
+    const [endOfTest, setEndOfTest] = useState(false);
+    const [showSubmit, setShowSubmit] = useState(false);
+    const [result, setResult] = useState("");
 
     const pathParts = toolPath.split(';-;');
     const mainKey = pathParts[0];
     const toolKey = pathParts[1];
     const currentCatKey = pathParts[2];
     const symptomKey = pathParts[3];
-    const isSymptomView = pathParts.length === 4;
+    const isSymptomView = pathParts.length == 4;
     const isToolSelected = pathParts.length >= 2;
 
     const symptomData = isSymptomView ? toolData[mainKey]?.[toolKey]?.[currentCatKey]?.["symptoms"]?.[symptomKey] : null;
@@ -27,8 +36,10 @@ function NarzedzieCopy({toolData}) {
     useEffect(() => {
         if (!isToolSelected) {
             setOpenedCategs([]);
+            setShowSubmit(false);
             setTestPoints({});
             setCategs(0);
+            setEndOfTest(false);
             return;
         }
 
@@ -37,6 +48,7 @@ function NarzedzieCopy({toolData}) {
         if (selectedTool) {
             const categoryKeys = Object.keys(selectedTool);
             setCategs(categoryKeys.length);
+            isSymptomView
             
             const initialPoints = {};
             categoryKeys.forEach(catKey => {
@@ -97,6 +109,30 @@ function NarzedzieCopy({toolData}) {
         }
     };
 
+    const handleSubmit = () => {
+        let pointsSum = 0;
+
+        Object.entries(testPoints).forEach(([key, item]) => {
+            Object.entries(item).forEach(([cKey, data]) => {
+                pointsSum += data.points*data.multiplier;
+            });
+        });
+
+        if(pointsSum >= GRANICE_PUNKTOWE[1]){
+            setResult('k') // krytyczny
+        }else if(pointsSum >= GRANICE_PUNKTOWE[0] && pointsSum < GRANICE_PUNKTOWE[1]){
+            setResult('s') // średni
+        }else{
+            setResult('d') // dobry
+        }
+
+        setShowSubmit(true);
+    }
+
+    useEffect(() => {
+        setEndOfTest(categs > 0 && openedCategs.length === categs);
+    }, [openedCategs])
+
     return (
         <div className='narzedzie_container'>
             <div className='menu'>
@@ -140,16 +176,14 @@ function NarzedzieCopy({toolData}) {
                                             (symptomKey === sKey && currentCatKey === key) ? "bold" : ""
                                             ].join(' ').trim()} key={sKey}
                                             onClick={() => setToolPath([mainKey, toolKey, key, sKey].join(';-;'))}
-                                        >
-                                            {sKey}
-                                        </li>
+                                        >{sKey}</li>
                                     ))}
                                 </ul>
                             </div>
                         ))}
                     </div>
                     <div className='shadow'/>
-                    <div id='submit-condition-btn' className={openedCategs.length === categs && categs > 0 ? "" : "disable"}>
+                    <div id='submit-condition-btn' className={openedCategs.length === categs && categs > 0 ? "" : "disable"} onClick={() => openedCategs.length === categs && categs > 0 && handleSubmit()}>
                         Sprawdź stan techniczny
                     </div>
                 </>
@@ -222,10 +256,27 @@ function NarzedzieCopy({toolData}) {
                         <div id='continue-btn' onClick={handleNext}>{isLastSymptom && isLastCategory ? "Zakończ badanie" : "Dalej"}</div>
                     </>
                     :
-                    <div className='empty-info'>Wybierz symptom z listy po lewej, aby rozpocząć ocenę.</div>
+                    endOfTest ?
+                        <div className='information-message'><b>Wypełniłeś formularz</b><br/>aby poznać wynik kliknij przycisk po lewej<br/><BsArrowDownLeft /></div>
+                        :
+                        <div className='information-message'></div>
                     }
                 </div>
             </div>
+            {showSubmit &&
+                <div id='submit-msg'>
+                    <div className='wrapper'>
+                        <h3 className={result}>{data["textUI"][result]["title"]}</h3>
+                        {<p>
+                            {data["textUI"][result]["text"].split(';-;')[0]}
+                            <b>({toolKey})</b>
+                            {data["textUI"][result]["text"].split(';-;')[1]}
+                            
+                            <button value={"OK"}/>
+                        </p>}
+                    </div>
+                </div>
+            }
         </div>
     )
 }

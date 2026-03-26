@@ -183,7 +183,7 @@ function App() {
           } />
           <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy baza={data["knowledgeBase"]} />} />
           <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie data={data["conditionTool"]} />} />
-          <Route path="/aplikacja-offshore/narzedziecopy/*" element={<NarzedzieCopy toolData={data["conditionTool"]}/>} />
+          <Route path="/aplikacja-offshore/narzedziecopy/*" element={<NarzedzieCopy data={data}/>} />
         </Routes>
       </main>
       <footer>
