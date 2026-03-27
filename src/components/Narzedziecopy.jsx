@@ -1,5 +1,5 @@
 import './Narzedzie.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { BsArrowReturnLeft, BsCaretDown, BsArrowDownLeft } from "react-icons/bs";
 
 const GRANICE_PUNKTOWE = [100, 150]
@@ -26,12 +26,121 @@ function NarzedzieCopy({data}) {
     const isSymptomView = pathParts.length == 4;
     const isToolSelected = pathParts.length >= 2;
 
-    const symptomData = isSymptomView ? toolData[mainKey]?.[toolKey]?.[currentCatKey]?.["symptoms"]?.[symptomKey] : null;
+    const symptomData = (isSymptomView && toolData[mainKey]?.[toolKey]) 
+        ? toolData[mainKey][toolKey][currentCatKey]?.["symptoms"]?.[symptomKey] 
+        : null;
+    const allCategories = (isSymptomView && toolData[mainKey]?.[toolKey]) 
+        ? Object.keys(toolData[mainKey][toolKey]) 
+        : [];
     const currentPointState = isSymptomView ? testPoints[currentCatKey]?.[symptomKey] : null;
-    const allCategories = isSymptomView ? Object.keys(toolData[mainKey][toolKey]) : [];
     const currentCatSymptoms = isSymptomView ? Object.keys(toolData[mainKey][toolKey][currentCatKey].symptoms).filter(s => s !== "") : [];
     const isLastCategory = isSymptomView && allCategories.indexOf(currentCatKey) === allCategories.length - 1;
     const isLastSymptom = isSymptomView && currentCatSymptoms.indexOf(symptomKey) === currentCatSymptoms.length - 1;
+
+    const prevDataRef = useRef(data);
+
+    // Mapowanie starej ścieżki do nowej przy zmianie pliku JSON
+    useEffect(() => {
+        if (prevDataRef.current !== data && toolPath !== "") {
+            const oldData = prevDataRef.current["conditionTool"];
+            const newData = data["conditionTool"];
+
+            // 1. Znajdź indeksy starej ścieżki w starym pliku JSON
+            const oldMainKeys = Object.keys(oldData);
+            const mainIdx = oldMainKeys.indexOf(mainKey);
+            
+            const oldToolKeys = Object.keys(oldData[mainKey] || {});
+            const toolIdx = oldToolKeys.indexOf(toolKey);
+
+            // 2. Mapuj na nowe klucze na podstawie indeksów
+            const newMainKey = Object.keys(newData)[mainIdx];
+            const newToolKeys = Object.keys(newData[newMainKey] || {});
+            const newToolKey = newToolKeys[toolIdx];
+
+            // Sprawdzenie: czy nowe klucze istnieją
+            if (!newMainKey || !newToolKey) {
+                setToolPath("");
+                return;
+            }
+
+            let newPath = [newMainKey, newToolKey];
+
+            if (pathParts.length >= 3) {
+                const oldCatKeys = Object.keys(oldData[mainKey][toolKey]);
+                const catIdx = oldCatKeys.indexOf(currentCatKey);
+                const newCatKeys = Object.keys(newData[newMainKey][newToolKey]);
+                
+                // Sprawdzenie: czy indeks istnieje w nowej strukturze
+                if (catIdx < 0 || catIdx >= newCatKeys.length) {
+                    setToolPath([newMainKey, newToolKey].join(';-;'));
+                    return;
+                }
+                
+                const newCatKey = newCatKeys[catIdx];
+
+                newPath.push(newCatKey);
+
+                if (pathParts.length === 4) {
+                    const oldSympKeys = Object.keys(oldData[mainKey][toolKey][currentCatKey].symptoms);
+                    const sympIdx = oldSympKeys.indexOf(symptomKey);
+                    const newSympKeys = Object.keys(newData[newMainKey][newToolKey][newCatKey].symptoms);
+                    
+                    // Sprawdzenie: czy indeks symptomu istnieje w nowej strukturze
+                    if (sympIdx >= 0 && sympIdx < newSympKeys.length) {
+                        const newSympKey = newSympKeys[sympIdx];
+                        if (newSympKey) {
+                            newPath.push(newSympKey);
+                        }
+                    }
+                }
+            }
+
+            // 3. Zaktualizuj ścieżkę i punkty bez ich zerowania
+            setToolPath(newPath.join(';-;'));
+            
+            // Mapowanie punktów (zachowanie mnożników)
+            setTestPoints(prevPoints => {
+                const newPoints = {};
+                const newToolObj = newData[newMainKey][newToolKey];
+                
+                Object.keys(newToolObj).forEach((catKey, cIdx) => {
+                    newPoints[catKey] = {};
+                    const oldCatKey = Object.keys(oldData[mainKey][toolKey])[cIdx];
+                    
+                    Object.keys(newToolObj[catKey].symptoms).forEach((sKey, sIdx) => {
+                        if (sKey === "") return;
+                        const oldSKey = Object.keys(oldData[mainKey][toolKey][oldCatKey].symptoms)[sIdx];
+                        
+                        newPoints[catKey][sKey] = {
+                            points: newToolObj[catKey].symptoms[sKey].points || 0,
+                            multiplier: prevPoints[oldCatKey]?.[oldSKey]?.multiplier || 0
+                        };
+                    });
+                });
+                return newPoints;
+            });
+
+            // Mapowanie otwartych kategorii
+            setOpenedCategs(prev => prev.map(oldCat => {
+                const idx = Object.keys(oldData[mainKey][toolKey]).indexOf(oldCat);
+                const newCatKeys = Object.keys(newData[newMainKey][newToolKey]);
+                return newCatKeys[idx] || oldCat;
+            }));
+            
+            // Mapowanie aktywnego nagłówka
+            if (uncoveredH3 !== "") {
+                const newCatKeys = Object.keys(newData[newMainKey][newToolKey]);
+                if (Object.keys(oldData[mainKey][toolKey]).includes(uncoveredH3)) {
+                    const idx = Object.keys(oldData[mainKey][toolKey]).indexOf(uncoveredH3);
+                    setUncoveredH3(newCatKeys[idx] || "");
+                } else if (Object.keys(oldData).includes(uncoveredH3)) {
+                    const idx = Object.keys(oldData).indexOf(uncoveredH3);
+                    setUncoveredH3(Object.keys(newData)[idx] || "");
+                }
+            }
+        }
+        prevDataRef.current = data;
+    }, [data]);
 
     useEffect(() => {
         if (!isToolSelected) {
@@ -68,15 +177,14 @@ function NarzedzieCopy({data}) {
             });
 
             setTestPoints(prev => {
-            const prevKeys = Object.keys(prev);
-            const newKeys = Object.keys(initialPoints);
-            if (prevKeys.length === 0 || prevKeys[0] !== newKeys[0]) {
-                return initialPoints;
-            }
-            return prev;
-        });
+                const prevKeys = Object.keys(prev);
+                if (prevKeys.length === 0 || prevKeys.length !== categoryKeys.length) {
+                    return initialPoints;
+                }
+                return prev;
+            });
         }
-    }, [toolPath, toolData]);
+    }, [toolPath, mainKey, toolKey]);
 
     const handleNext = () => {
         const categorySymptoms = toolData[mainKey]?.[toolKey]?.[currentCatKey]?.symptoms;
@@ -292,7 +400,7 @@ function NarzedzieCopy({data}) {
                             <b>({toolKey})</b>
                             {data["textUI"][result]["text"].split(';-;')[1]}
                             
-                            <button className={result} onClick={() => setToolPath("")}>OK</button>
+                            <button className={result} onClick={() => { setToolPath(""); setShowSubmit(false); }}>OK</button>
                         </p>}
                     </div>
                 </div>

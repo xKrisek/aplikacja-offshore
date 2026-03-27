@@ -38,11 +38,11 @@ function App() {
       try {
         const module = await import(`./assets/data-${lang}.json`);
         setData(module.default);
+        console.log(data)
       } catch (error) {
         console.error("Nie udało się załadować pliku językowego:", error);
       }
     };
-    console.log(data)
 
     loadData();
   }, [lang]);
@@ -70,6 +70,10 @@ useEffect(() => {
       </div>
     </SingleValue>
   )
+  
+  if (!data || !data.knowledgeBase) {
+      return <div className="loading">Ładowanie bazy wiedzy...</div>;
+  }
 
   return (
     <div className="bg">
@@ -91,7 +95,7 @@ useEffect(() => {
             onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
-              <img src={bazaWiedzySvg} alt="Baza" />
+              <img src={bazaWiedzySvg} alt={data.textUI.knowledgeBase.title} />
               <p>{data.textUI.knowledgeBase.title}</p>
             </div>
           </NavLink>
@@ -102,8 +106,8 @@ useEffect(() => {
             onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
-               <img src={ocenaStanuTechSvg} alt="Narzędzie" /> 
-              <p>Narzędzie</p>
+               <img src={ocenaStanuTechSvg} alt={data.textUI.conditionTool.title} /> 
+              <p>{data.textUI.conditionTool.title}</p>
             </div>
           </NavLink>
           {/*  Nawigacja do drugiego konceptu stony narzędzia */}
@@ -113,8 +117,8 @@ useEffect(() => {
             onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
-               <img src={ocenaStanuTechSvg} alt="Narzędzie 2" /> 
-              <p>Narzędzie 2</p>
+               <img src={ocenaStanuTechSvg} alt={data.textUI.conditionTool.title} /> 
+              <p>{data.textUI.conditionTool.title} 2</p>
             </div>
           </NavLink>
         </nav>

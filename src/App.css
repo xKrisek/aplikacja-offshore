@@ -114,7 +114,7 @@ header a, header a:active, header a:visited {
 
 nav img{
   height: 30px;
-  padding: 10px 10px;
+  padding: 15px 10px;
   float: left;
 }
 
@@ -167,12 +167,13 @@ nav img{
 
 nav a{
  width: 22.5%;
- height: calc(5rem-30px);
- margin: 15px 5%;
+ height: calc(100%-20px);
+ margin: 10px 5%;
  background-color: lightgray;
  text-align: center;
  border-radius: 0 1rem 0 1rem;
  overflow: hidden;
+ position: relative;
 }
 
 header nav a:hover, .selected-location{
@@ -195,10 +196,16 @@ header nav a:hover, .selected-location{
 }
 
 header a p{
-  line-height: 1rem;
+  position: absolute;
+  left: 70px;
   float: left;
-  margin: 10px 0;
+  text-align: left;
+  margin: 0;
+  width: calc(100% - 70px);
   font-size: 1rem;
+  line-height: 1.05;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 header h1{
@@ -223,8 +230,8 @@ header h1 img{
 }
 
 header h1:hover img{
-  transform: rotate(360deg);
-  transition: 0.5s ease-in-out;
+  transform: scale(1.1);
+  transition: 0.2s ease-in-out;
 }
 
 .bg::-webkit-scrollbar{

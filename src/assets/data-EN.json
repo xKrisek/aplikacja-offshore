@@ -228,8 +228,11 @@
             "text": "This item ;-; has no contraindications to use."
         },
         "knowledgeBase":{
-            "title": "Baza wiedzy",
-            "r_panel_title": "Spis treści"
+            "title": "Knowledge Base",
+            "r_panel_title": "Table of Contents"
+        },
+        "conditionTool":{
+            "title": "Condition Assessment"
         }
     }
 }
