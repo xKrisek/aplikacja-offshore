@@ -184,7 +184,7 @@ header nav a:hover, .selected-location{
   padding: 2rem;
   background-image: linear-gradient(135deg, lightgray, transparent);
   border-radius: 2rem;
-  width: 100%;
+  width: calc(100% - 9rem);
   height: 100%;
   box-shadow: 10px 10px 20px linear-gradient(135deg, #fff, transparent, transparent, transparent);
 }

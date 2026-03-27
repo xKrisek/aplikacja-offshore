@@ -15,11 +15,10 @@ import britainFlag from './assets/britain-flag-icon.svg'
 import logo_ciop from './assets/ciop.png'
 import logo_ncbr from './assets/ncbr.jpg'
 import appLogo from './assets/logo.svg'
-import data from './assets/data.json'
 import { BsChevronCompactLeft } from "react-icons/bs";
 
 function App() {
-
+  // tablica języków
   const languageOptions = [
     {value: 'PL', label: 'Polski', icon: polandFlag},
     {value: 'EN', label: 'English', icon: britainFlag},
@@ -29,6 +28,28 @@ function App() {
   document.getElementById('root')
 
   const [showLang, setShowLang] = useState(false);
+  const [lang, setLang] = useState(() => { //UseState do wyboru języka i ewewntualnego pobrania z localStorage
+    return localStorage.getItem('app_lang') || 'PL';
+  });
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const module = await import(`./assets/data-${lang}.json`);
+        setData(module.default);
+      } catch (error) {
+        console.error("Nie udało się załadować pliku językowego:", error);
+      }
+    };
+    console.log(data)
+
+    loadData();
+  }, [lang]);
+
+useEffect(() => {
+    localStorage.setItem('app_lang', lang);
+  }, [lang]);
 
   const { Option } = components;
   const IconOption = (props) => (
@@ -54,6 +75,7 @@ function App() {
     <div className="bg">
       <header>
         <h1>
+          {/*  Nawigacja do stony głównej */}
           <NavLink 
             to="/aplikacja-offshore/" 
             end
@@ -62,7 +84,7 @@ function App() {
             <img src={appLogo}/>OFF-SHORE<br/>SAFETY
           </NavLink></h1>
         <nav>
-
+          {/*  Nawigacja do stony bazy wiedzy */}
           <NavLink 
             to="/aplikacja-offshore/baza-wiedzy" 
             className={({ isActive }) => isActive ? 'selected-location' : ''}
@@ -73,7 +95,7 @@ function App() {
               <p>Baza wiedzy</p>
             </div>
           </NavLink>
-
+          {/*  Nawigacja do pierwszego konceptu stony narzędzia */}
           <NavLink 
             to="/aplikacja-offshore/narzedzie" 
             className={({ isActive }) => isActive ? 'selected-location' : ''}
@@ -84,19 +106,20 @@ function App() {
               <p>Narzędzie</p>
             </div>
           </NavLink>
-
+          {/*  Nawigacja do drugiego konceptu stony narzędzia */}
           <NavLink  
             to="/aplikacja-offshore/narzedziecopy" 
             className={({ isActive }) => isActive ? 'selected-location' : '' }
             onClick={() => {window.scrollTo(0, 0)}}
           >
             <div>
-               <img src={ocenaStanuTechSvg} alt="Narzędzie (koncept 2)" /> 
-              <p>Narzędzie (koncept 2)</p>
+               <img src={ocenaStanuTechSvg} alt="Narzędzie 2" /> 
+              <p>Narzędzie 2</p>
             </div>
           </NavLink>
         </nav>
 
+        {/* Wybór języka na stronie */}
         <div id='language-container' tabIndex="0" onBlur={(e) => {!e.currentTarget.contains(e.relatedTarget) && setShowLang(false)}}>
           <div className='lang-button' onClick={() => setShowLang(!showLang)}>
             <img src={languageSvg} alt="Language" />
@@ -105,9 +128,11 @@ function App() {
           <Select
             className={showLang ? '' : 'lang-hidden'}
             defaultValue={languageOptions[0]}
+            value={languageOptions.find(option => option.value === lang)}
             options={languageOptions}
             components={{ Option: IconOption, SingleValue: IconValue }}
             isSearchable={false}
+            onChange={(selected) => setLang(selected.value)}
             styles={{
               control: (base) => ({
                 ...base,
@@ -173,26 +198,37 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/aplikacja-offshore/" element={
+          {/* Strona główna */}
+          {data ?
             <>
-              <div id='main-site-desc'>
-                <h2><strong>Narzędzie wspierające decyzyjność</strong> w zakresie doboru i oceny stanu technicznego ŚOI stosowanych w obszarze off-shore i innych outdoorowych.</h2>
-              </div>
-              <div id='main-site-desc'/>
-              <div id='main-site-desc'/>
-              <div id='main-site-desc'/>
+              <Route path="/aplikacja-offshore/" element={
+                <>
+                  <div id='main-site-desc'>
+                    <h2><strong>Narzędzie wspierające decyzyjność</strong> w zakresie doboru i oceny stanu technicznego ŚOI stosowanych w obszarze off-shore i innych outdoorowych.</h2>
+                  </div>
+                  <div id='main-site-desc'/>
+                  <div id='main-site-desc'/>
+                  <div id='main-site-desc'/>
+                </>
+              } />
+              {/* Strona bazy wiedzy */}
+              <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy data={data} />} />
+              {/* Pierwszy koncept narzędzia */}
+              <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie data={data?.conditionTool} />} />
+              {/* Drugi koncept narzędzia */}
+              <Route path="/aplikacja-offshore/narzedziecopy/*" element={<NarzedzieCopy data={data} />}/>
             </>
-          } />
-          <Route path="/aplikacja-offshore/baza-wiedzy" element={<BazaWiedzy baza={data["knowledgeBase"]} />} />
-          <Route path="/aplikacja-offshore/narzedzie/*" element={<Narzedzie data={data["conditionTool"]} />} />
-          <Route path="/aplikacja-offshore/narzedziecopy/*" element={<NarzedzieCopy data={data}/>} />
+          :
+            <>WCZYTYWANIE DANYCH</>
+          }
         </Routes>
       </main>
-      <footer>
+      <footer> {/* Stopka */}
         <div className='footer_img'>
           <a href="https://www.ciop.pl" target="_blank" rel="noopener noreferrer"><img src={logo_ciop} alt="CIOP_PIB" /></a>
           <a href="https://www.ncbr.gov.pl" target="_blank" rel="noopener noreferrer"><img src={logo_ncbr}alt="NCBR" /></a>
         </div>
+         {/* Tabela z informacjami do stopki (Krótki opis, Szybkie linki i Kontakt) */}
         <table className='footer_table'>
           <thead>
             <tr>

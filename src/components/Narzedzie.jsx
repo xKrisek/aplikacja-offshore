@@ -7,25 +7,26 @@ import kask from '../assets/kask.png';
 
 function Narzedzie(props) {
 
-    const color_unchecked = 'white';
-    const color_checked = '#78afbd';
+    const color_unchecked = 'white'; {/* kolor przycisku przed wejściem w katgorię */}
+    const color_checked = '#78afbd'; {/* kolor przycisku po wejściu w katgorię */}
 
     const [criteria1, setCriteria1] = useState(null);
     const [criteria2, setCriteria2] = useState(null);
     const [criteria3, setCriteria3] = useState(null);
-    const [showResult, setShowResult] = useState(false)
-    const [currentSOI, setCurrentSOI] = useState("");
-    const [pointsSum, setPointsSum] = useState(0);
-    const [valuePoint, setValuePoint] = useState(1)
+    const [showResult, setShowResult] = useState(false); {/* useState od wyświetlania wyniku oceny */}
+    const [currentSOI, setCurrentSOI] = useState(""); {/* useState aktualizujący aktualnie wybrany ŚOI */}
+    const [pointsSum, setPointsSum] = useState(0); {/* useState od liczenia punktów do oceny */}
+    const [valuePoint, setValuePoint] = useState(1);
 
-    const [path, setPath] = useState("")
+    const [path, setPath] = useState(""); {/* useState od ścierzki */}
     const [arrayPath, setArrayPath] = useState([])
 
     const location = useLocation();
     const [textPath, setTextPath] = useState("Ocena stanu technicznego")
 
-    const [criteriasDone, setCriteriasDone] = useState("");
+    const [criteriasDone, setCriteriasDone] = useState([]); {/* useState przechowywujący tablicę przejrzanych kryterii */}
 
+    // useEffect mający na celu zapobieganie dodawanie się ścierzki do h2 o id: narzedzie-title podczas odświerzania stony
     useEffect(() => {
         if (location.pathname === "/" || location.pathname === "/aplikacja-offshore/narzedzie") {
             setTextPath("Ocena stanu technicznego");
@@ -49,19 +50,9 @@ function Narzedzie(props) {
         }
     }, [location.pathname]);
 
+    // Funkcja od sprawdzania czy wszystkie kryteria zostały przejrzane
     function checkAllConditionHandler() {
-        if (currentSOI == "Okulary, gogle, osłony twarzy")
-        {
-            if (criteriasDone.includes(1) && criteriasDone.includes(2) && criteriasDone.includes(3) && criteriasDone.includes(4))
-            {
-                setShowResult(true)
-            }
-            else
-            {
-                alert("Przejrzyj wszystkie opcje!!!")
-            }
-        }
-        else
+        if (currentSOI == "Hełmy ochronne")
         {
             if (criteriasDone.includes(1) && criteriasDone.includes(2) && criteriasDone.includes(3))
             {
@@ -74,6 +65,7 @@ function Narzedzie(props) {
         }
     }
 
+    // Funkcja od zliczania punktów
     function handleCheckboxChange(checked, points) {
         if (!checked) {
             setPointsSum(prevPoints => prevPoints - points)
@@ -84,6 +76,9 @@ function Narzedzie(props) {
         }
     }
 
+    // Konwerja ścierzki z data.js na ścierzkę internetową
+    // poprzez zmianę lier na małe, usuwanie polskich znaków, spacji oraz znaków specjalnych
+    // np. Hełmy ochronne na helmy-ochronne
     const toLink = (str) => {
         return str
             .normalize("NFD")
@@ -92,7 +87,7 @@ function Narzedzie(props) {
             .replace(/[^a-zA-Z0-9\s-]/g, "")
             .trim()
             .replace(/\s+/g, "-")
-            .toLowerCase();
+            .toLowerCase();           
     };
 
     return(
@@ -121,7 +116,6 @@ function Narzedzie(props) {
                     <h2 id="narzedzie-title">{textPath}</h2>
                     {arrayPath != "" && Object.entries(props.data[arrayPath]).map(([key, value]) => {
                         const linkPath = toLink(key);
-                        console.log(linkPath);
                         
                         return (
                             <NavLink key={key} to={linkPath} onClick={() => {setCurrentSOI(key); setPath(linkPath)}}>
@@ -133,6 +127,7 @@ function Narzedzie(props) {
                 }/>
 
                 {/* Hełmy ochronne */}
+                {/* Wybór oceny elementów hełmu ochronnego w formie przycisków */}
                 <Route path="obiekty-z-polimerow-stalych/helmy-ochronne/" element={
                     <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne</h2>
@@ -177,6 +172,7 @@ function Narzedzie(props) {
                 } />
 
                 {/* Hełmy ochronne - ocena stanu skorupy */}
+                {/* Wybór prawdopodobnych uszkodzeń na skorupie hełmu ochronnego w formie przycisków */}
                 <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-skorupy/' element={
                     <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu skorupy</h2>
@@ -192,6 +188,7 @@ function Narzedzie(props) {
                                 <button onClick={() => {setCriteria1(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 1])}}>Dalej</button>
                             </Link>
                         </div>
+                        {/* Szczegółowe wyświetlanie kryterii dotyczących uszkodzeń dla skorupy hełmu ochronnego */}
                         {criteria1 != null ? (
                             <div id='narzedzie-opis'>
                                 <h2>{criteria1}</h2>
@@ -209,6 +206,7 @@ function Narzedzie(props) {
                 } />
 
                 {/* Hełmy ochronne - ocena stanu więźby i zaczepów */}
+                {/* Wybór prawdopodobnych uszkodzeń przy więźbach i zaczepach hełmu ochronnego w formie przycisków */}
                 <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-wiezby-i-zaczepow/' element={
                     <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu więźby i zaczepów</h2>
@@ -224,6 +222,7 @@ function Narzedzie(props) {
                                 <button onClick={() => {setCriteria2(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 2])}}>Dalej</button>
                             </Link>
                         </div>
+                        {/* Szczegółowe wyświetlanie kryterii dotyczących uszkodzeń dla więźby i zaczepów hełmu ochronnego */}
                         {criteria2 != null ? (
                             <div id='narzedzie-opis'>
                                 <h2>{criteria2}</h2>
@@ -242,6 +241,7 @@ function Narzedzie(props) {
                 } />
 
                 {/* Hełmy ochronne - ocena stanu paska podbródkowego */}
+                {/* Wybór prawdopodobnych uszkodzeń paska podbródkowego hełmu ochronnego w formie przycisków */}
                 <Route path='obiekty-z-polimerow-stalych/helmy-ochronne/ocena-stanu-paska-podbrodkowego/' element={
                     <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Hełmy ochronne/Ocena stanu paska podbródkowego</h2>
@@ -257,6 +257,7 @@ function Narzedzie(props) {
                                 <button onClick={() => {setCriteria3(null); setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, 3])}}>Dalej</button>
                             </Link>
                         </div>
+                        {/* Szczegółowe wyświetlanie kryterii dotyczących uszkodzeń dla paska podbródkowego hełmu ochronnego */}
                         {criteria3 != null ? (
                             <div id='narzedzie-opis'>
                                 <h2>{criteria3}</h2>
@@ -279,57 +280,25 @@ function Narzedzie(props) {
                 <Route path="obiekty-z-polimerow-stalych/okulary-gogle-oslony-twarzy/" element={
                     <div className='narzedzie_container'>
                         <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Okulary, gogle, osłony twarzy</h2>
-                        <NavLink to='ocena-wizjerow-soczewek/'>
-                            {criteriasDone.includes(1) ? (
-                                <>
-                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena wizjerów / soczewek</button><br/>
-                                </>
-                            ) : (
-                                <>
-                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena wizjerów / soczewek</button><br/>
-                                </>
-                            )}
-                        </NavLink>
-                        <NavLink to='ocena-elementow-konstrukcyjnych/'>
-                            {criteriasDone.includes(2) ? (
-                                <>
-                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena elementów konstrukcyjnych</button><br/>
-                                </>
-                            ) : (
-                                <>
-                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena elementów konstrukcyjnych</button><br/>
-                                </>
-                            )}
-                        </NavLink>
-                        <NavLink to='ocena-stanu-ochrony-bocznej/'>
-                            {criteriasDone.includes(3) ? (
-                                <>
-                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena stanu ochrony bocznej</button><br/>
-                                </>
-                            ) : (
-                                <>
-                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stanu ochrony bocznej</button><br/>
-                                </>
-                            )}
-                        </NavLink>
-                        <NavLink to='ocena-stabilności-i-utrzymania-na-głowie/'>
-                            {criteriasDone.includes(4) ? (
-                                <>
-                                    <button style={{backgroundColor: `${color_checked}`}}>Ocena stabilności i utrzymania na głowie</button>
-                                </>
-                            ) : (
-                                <>
-                                    <button style={{backgroundColor: `${color_unchecked}`}}>Ocena stabilności i utrzymania na głowie</button>
-                                </>
-                            )}
-                        </NavLink>
-                        <div id="sprawdz_stan" style={{float: 'right'}}>
-                            <p id='check_condition_p' style={{width: '25%'}}>Aby ocenić właściwy stan techniczny środków ochrony przejrzyj wszystkie pola</p>
-                            <button id='check_condition_button' onClick={() => {checkAllConditionHandler()}}>Sprawdź stan techniczny</button>
-                        </div>
+                        <p>Treść dla okularów, gogli, osłon twarzy</p>
                     </div>
                 } />
 
+                {/* Ochronniki słuchu */}
+                <Route path="obiekty-z-polimerow-stalych/ochronniki-sluchu/" element={
+                    <div className='narzedzie_container'>
+                        <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Ochronniki słuchu</h2>
+                        <p>Treść dla ochronników słuchu</p>
+                    </div>
+                } />
+
+                {/* Przyłbice spawalnicze */}
+                <Route path="obiekty-z-polimerow-stalych/okulary-gogle-oslony-twarzy/" element={
+                    <div className='narzedzie_container'>
+                        <h2 id="narzedzie-title">Ocena stanu technicznego/Obiekty z polimerów stałych/Przyłbice spawalnicze</h2>
+                        <p>Treść dla przyłbic spawalniczych</p>
+                    </div>
+                } />
 
                 {/* Obiekty włókiennicze / tekstylne */}
                 <Route path="obiekty-wlokiennicze-tekstylne/" element={
@@ -352,6 +321,7 @@ function Narzedzie(props) {
                 {/* Metale */}
 
             </Routes>
+            {/* Wyświetlanie wyniku końcowego po ocenie stanu technicznego */}
             {showResult && 
                 <div className='wynik_koncowy_black'>
                     <div className='wynik_koncowy'>

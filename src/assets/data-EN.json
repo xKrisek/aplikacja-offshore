@@ -1,0 +1,235 @@
+{
+  "knowledgeBase": [
+    {
+      "id": 1,
+      "title": "INTRODUCTION",
+      "content": "Welcome to our knowledge base, designed for everyone interested in safety within offshore and outdoor environments. Our goal is to provide reliable information to help understand the importance of properly selecting and assessing the technical condition of PPE (Personal Protective Equipment) used in these demanding conditions."
+    },
+    {
+      "id": 2,
+      "title": "WHY IS IT IMPORTANT?",
+      "content": "PPE is crucial for protecting yourself and others from accidents. Ignoring material degradation leads to: \n - Loss of protective properties: A helmet that has become brittle will not absorb impact energy; a rope with damaged fibers will break under load. \n - Shortened lifespan: Extreme conditions can make equipment rated for 10 years dangerous after just 2 seasons. \n - Risk of fatal accidents: In the offshore and outdoor industries, PPE prevents accidents and severe injuries."
+    },
+    {
+      "id": 3,
+      "title": "AGING FACTORS",
+      "content": "Fieldwork exposes equipment to the synergistic effects of destructive factors: \n - UV Radiation: Aggressive sunlight, especially on the open sea or in high mountains. \n - Seawater and Humidity: Salt crystallizing within fibers damages them, leading to material tearing. \n - Temperature: Extreme heat and frost cause micro-cracks in materials. \n - Mechanical Factors: Sand, constant bending of webbing, and friction against rough surfaces result in the weakening of textile structures, leading to abrasions, fraying, and holes."
+    },
+    {
+      "id": 4,
+      "title": "GLOSSARY",
+      "content": "- PPE (Personal Protective Equipment): Equipment intended to protect the worker from injuries. \n - Offshore: Industries related to work at sea (e.g., oil rigs, offshore wind farms). \n - Outdoor: Activities and work performed in the open air, often in challenging terrain."
+    },
+    {
+      "id": 5,
+      "title": "WHO WILL BENEFIT FROM THIS KNOWLEDGE?",
+      "content": "- Health & Safety (HSE) Specialists: For effective supervision of the condition of employee equipment. \n - PPE Manufacturers: For better design of equipment resistant to harsh conditions. \n - Workers and Users: To identify when their own gear loses its protective properties. \n - Employers: To make informed investments in higher quality equipment that lasts longer in tough conditions."
+    },
+    {
+      "id": 6,
+      "title": "OFFSHORE AND OUTDOOR PROFESSIONS",
+      "content": "- Offshore refinery and processing plant workers: Personnel operating Floating Production Storage and Offloading (FPSO) units, where protection against mechanical damage, high-temperature burns, and the reliability of fastening mechanisms in aggressive environments is key. \n - Maritime transport crews: Sailors and officers of merchant and technical vessels, exposed to constant salt and moisture, requiring functional high-visibility clothing with reflective tapes and eye protection resistant to clouding/pitting. \n - Energy sector specialists: Engineers and technicians working on oil rigs and wind farms, relying on safety helmets and certified fall arrest harnesses. \n - High-altitude technicians and riggers: Individuals performing work on telecommunication masts, towers, and steel structures, for whom the stability of adjusters and lack of abrasions on structural webbing are critical. \n - Industrial workers and material processing specialists: Including welders requiring face protection from burns and machine operators working in noise, using hearing protection. \n - Logistics and port personnel: Workers operating in high-salinity environments where protective clothing with reflective tapes and eye protection are prone to rapid degradation. \n - Emergency, technical, and uniformed services: Teams operating in the field, where equipment must be resistant to mechanical cracking and ensure a perfect fit despite rapid movements. \n - Forestry and green maintenance sector workers: Individuals exposed to flying debris and eye injuries, using visors resistant to dulling. \n - Instructors and guides in qualified tourism: Outdoor professionals, where long-term UV exposure affects the stability of polymers in helmets and the strength of textile load-bearing elements."
+    },
+    {
+      "id": 7,
+      "title": "PPE SELECTION",
+      "content": ""
+    },
+    {
+      "id": 8,
+      "title": "TECHNICAL CONDITION ASSESSMENT",
+      "content": ""
+    },
+    {
+      "id": 9,
+      "title": "ESTIMATING ACTUAL PPE EXPIRATION DATE",
+      "content": ""
+    }
+  ],
+    "conditionTool": {
+        "Objects made of solid polymers": {
+            "Protective helmets": {
+                "Assessment of the shell condition": {
+                    "symptoms": {
+                        "Deformations":{
+                            "hasRange": 1,
+                            "points": 100,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Color changes":{
+                            "hasRange": 1,
+                            "points": 100,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Cracks":{
+                            "hasRange": 1,
+                            "points": 100,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Deep abrasions":{
+                            "hasRange": 1,
+                            "points": 100,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Splinters":{
+                            "hasRange": 1,
+                            "points": 100,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Chipping":{
+                            "hasRange": 1,
+                            "points": 100,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Assessment of the condition of the truss and attachments": {
+                    "symptoms": {
+                        "Weakening of connections":{
+                            "hasRange": 1,
+                            "points": 1,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Damage to the truss":{
+                            "hasRange": 1,
+                            "points": 2,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Damage to the seams":{
+                            "hasRange": 1,
+                            "points": 2,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Assessment of the condition of the chin strap": {
+                    "symptoms": {
+                        "Damage to the hooks":{
+                            "hasRange": 1,
+                            "points": 2,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Damage to the adjustment":{
+                            "hasRange": 1,
+                            "points": 1,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Damage to fasteners":{
+                            "hasRange": 1,
+                            "points": 2,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                }
+            },
+            "Glasses, goggles, face shields": {
+                "Viewfinder / Lens Rating": {
+                    "symptoms": {
+                        "Surface cracks":{
+                            "hasRange": 0,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Dullness and discoloration":{
+                            "hasRange": 1,
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Scratches":{
+                            "hasRange": 1,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Flaking (delamination)":{
+                            "hasRange": 1,
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Excessive evaporation":{
+                            "hasRange": 1,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Assessment of structural elements": {
+                    "symptoms": {
+                        "Deformations":{
+                            "hasRange": 1,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Surface cracks":{
+                            "hasRange": 1,
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Hinges not working properly":{
+                            "hasRange": 1,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Assessment of the condition of side protection": {
+                    "symptoms": {
+                        "Surface cracks":{
+                            "hasRange": 1,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "Leaks when worn":{
+                            "hasRange": 1,
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                },
+                "Assessment of stability and positioning on the head": {
+                    "symptoms": {
+                        "Unstable, falls off when worn":{
+                            "hasRange": 1,
+                            "points": 123,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        },
+                        "The adjustment system is not working properly":{
+                            "hasRange": 1,
+                            "points": 321,
+                            "information": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius reiciendis similique ipsam dolore magnam consequuntur dolorem aliquam nihil cumque facilis, necessitatibus recusandae harum? Adipisci expedita assumenda voluptates facere aliquid accusantium."
+                        }
+                    }
+                }
+            },
+            "Hearing protection": {
+
+            },
+            "Welding helmets": {
+
+            }
+        },
+        "Textile objects": {
+
+        },
+        "Metal objects": {
+
+        }
+    },
+    "textUI":{
+        "k":{
+            "title": "RESULT - NEGATIVE",
+            "text": "This item ;-; is no longer suitable for use. Please withdraw it immediately."
+        },
+        "s":{
+            "title": "RESULT - OBSERVE",
+            "text": "This element ;-; should be kept under constant control, but you can still use it."
+        },
+        "d":{
+            "title": "RESULT - POSITIVE",
+            "text": "This item ;-; has no contraindications to use."
+        },
+        "knowledgeBase":{
+            "title": "Baza wiedzy",
+            "r_panel_title": "Spis treści"
+        }
+    }
+}

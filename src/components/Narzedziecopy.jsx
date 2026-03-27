@@ -132,6 +132,10 @@ function NarzedzieCopy({data}) {
     useEffect(() => {
         setEndOfTest(categs > 0 && openedCategs.length === categs);
     }, [openedCategs])
+    
+    if (!data || !data.knowledgeBase) {
+        return <div className="loading">Ładowanie bazy wiedzy...</div>;
+    }
 
     return (
         <div className='narzedzie_container'>
@@ -224,8 +228,9 @@ function NarzedzieCopy({data}) {
                         {symptomData?.hasRange === 1 && (
                             <div id='symptom-range' style={{ opacity: currentPointState?.multiplier > 0 ? 1 : 0 }}>
                                 <p>Nasilenie</p>
-                                <div className='range-wrapper' style={{ '--range-pos': `${(Math.round((currentPointState?.multiplier || 0.1) * 10) - 1) * 11.11}%`,
-                                                                        '--green-color': `${currentPointState?.multiplier}`}}>
+                                <div className='range-wrapper' style={{'--range-val': Math.round((currentPointState?.multiplier || 0.1) * 10) - 1,
+                                    '--green-color': currentPointState?.multiplier || 0.1
+                                }}>
                                     
                                     <div className="range-bubble">
                                         {Math.round((currentPointState?.multiplier || 0) * 10)}

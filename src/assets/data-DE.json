@@ -326,6 +326,10 @@
         "d":{
             "title": "WYNIK - POZYTYWNY",
             "text": "Ten element ;-; nie ma żadnych przeciwwskazań w użytkowaniu."
+        },
+        "knowledgeBase":{
+            "title": "Baza wiedzy",
+            "r_panel_title": "Spis treści"
         }
     }
 }
