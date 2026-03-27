@@ -92,7 +92,7 @@ useEffect(() => {
           >
             <div>
               <img src={bazaWiedzySvg} alt="Baza" />
-              <p>Baza wiedzy</p>
+              <p>{data.textUI.knowledgeBase.title}</p>
             </div>
           </NavLink>
           {/*  Nawigacja do pierwszego konceptu stony narzędzia */}

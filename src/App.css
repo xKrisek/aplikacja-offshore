@@ -195,7 +195,7 @@ header nav a:hover, .selected-location{
 }
 
 header a p{
-  line-height: 30px;
+  line-height: 1rem;
   float: left;
   margin: 10px 0;
   font-size: 1rem;

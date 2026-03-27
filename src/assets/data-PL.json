@@ -330,6 +330,9 @@
         "knowledgeBase":{
             "title": "Baza wiedzy",
             "r_panel_title": "Spis treści"
+        },
+        "conditionTool":{
+            "title": "Ocena stanu technicznego"
         }
     }
 }
