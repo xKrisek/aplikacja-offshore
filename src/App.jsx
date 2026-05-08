@@ -19,6 +19,56 @@ import { BsChevronCompactLeft } from "react-icons/bs";
 
 function App() {
 
+  /*
+   * Dokumentacja pliku App.jsx
+   * ========================================
+   * Opis:
+   *  - Główny komponent aplikacji. Zarządza wyborem języka (PL/EN/DE), dynamicznie
+   *    ładuje odpowiedni plik danych JSON (`data-{lang}.json`), renderuje nagłówek
+   *    z nawigacją, selector języka (react-select z ikonami), główną zawartość
+   *    (Routes) oraz stopkę.
+   *
+   * Props:
+   *  - Brak; komponent pobiera dane z plików JSON
+   *
+   * Importy/zasoby:
+   *  - `data-{lang}.json` : pliki danych ładowane dynamicznie na podstawie wybranego `lang`
+   *    (PL, EN, DE). Każdy plik zawiera strukturę:
+   *      { knowledgeBase: [...], conditionTool: {...}, textUI: {...} }
+   *  - Ikony (ikonki flag, SVG) importowane statycznie
+   *  - `react-select` : biblioteka do wielofunkcyjnych selectów (z komponentami)
+   *  - `react-router` : routing aplikacji
+   *
+   * Stan (główne zmienne):
+   *  - `languageOptions` : tablica predefiniowanych opcji { value, label, icon }
+   *  - `lang`, `setLang` : wybrany język (inicjalizowany z localStorage 'app_lang', domyślnie 'PL')
+   *  - `data`, `setData` : załadowany plik JSON dla wybranego języka (null do czasu załadowania)
+   *  - `showLang` : boolean sterujący widocznością dropdownu języków
+   *
+   * Hooki / efekty:
+   *  - `useEffect` (ładowanie danych) : uruchamia się przy zmianie `lang`. Dynamicznie
+   *    importuje plik `./assets/data-{lang}.json` i ustawia `data`. W razie błędu
+   *    loguje komunikat do konsoli.
+   *  - `useEffect` (localStorage) : uruchamia się przy zmianie `lang`, zapisuje
+   *    wybrany język do localStorage dla zapamiętania między sesjami.
+   *
+   * Komponenty pomocnicze:
+   *  - `IconOption(props)` : renderuje opcję listy z ikoną (flex, 10px gap)
+   *  - `IconValue(props)` : renderuje wybraną wartość z ikoną
+   *
+   * Struktura Routes:
+   *  - `/aplikacja-offshore/` : strona główna (tymczasowy layout)
+   *  - `/aplikacja-offshore/baza-wiedzy` : komponent `BazaWiedzy` z danymi z `data`
+   *  - `/aplikacja-offshore/narzedzie/*` : komponent `Narzedzie` z `data.conditionTool`
+   *  - `/aplikacja-offshore/narzedziecopy/*` : komponent `NarzedzieCopy` z całym `data`
+   *
+   * UI:
+   *  - Header: logo, nawigacja (3 linki), selector języka (react-select z ikonami flag)
+   *  - Main: Routes (warunkowo renderowane jeśli `data` jest załadowana)
+   *  - Footer: linki do CIOP/NCBR, tabela z linkami i kontaktami
+   *  - Loading screen: jeśli `data === null` lub `data.knowledgeBase` brakuje
+   */
+
   const languageOptions = [
     {value: 'PL', label: 'Polski', icon: polandFlag},
     {value: 'EN', label: 'English', icon: britainFlag},

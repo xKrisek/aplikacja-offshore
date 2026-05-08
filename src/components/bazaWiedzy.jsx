@@ -7,22 +7,34 @@ import './bazaWiedzy.css'
  * -----------------------------------
  * Opis:
  *  - Komponent wyświetla spis treści oraz szczegóły wybranego tematu z
- *    przekazanej listy `props.baza`.
+ *    `props.data.knowledgeBase`. Obsługuje dynamiczne ładowanie danych i
+ *    zmianę języka (data przychodzi jako dynamicznie załadowany JSON).
  *
  * Props:
- *  - `props.baza` : Array<{ title: string, content: string }>
- *      Lista obiektów reprezentujących tematy. Każdy element powinien zawierać
- *      `title` (tekst tytułu) i `content` (tekstowy opis).
+ *  - `props.data` : object zawierający:
+ *      - `props.data.knowledgeBase` : Array<{ title: string, content: string }>
+ *          Lista obiektów reprezentujących tematy.
+ *      - `props.data.textUI` : object zawierający teksty interfejsu
  *
  * Lokalne zmienne / stany:
- *  - `topics` : Array<string> — wygenerowana lista tytułów z `props.baza`.
- *  - `selectedTopic`, `setSelectedTopic` : wybrany temat. Domyślnie pierwszy
- *      tytuł z listy lub `'WSTĘP'` gdy brak danych.
+ *  - `topics` : Array<string> — wygenerowana lista tytułów z `props.data.knowledgeBase`.
+ *  - `selectedTopic`, `setSelectedTopic` : wybrany temat. Ustawiane domyślnie na
+ *      pierwszy element `props.data.knowledgeBase`.
+ *
+ * Hooki:
+ *  - `useEffect` : uruchamia się gdy zmieni się `props.data` (np. zmiana języka).
+ *    Resetuje `selectedTopic` na pierwszy temat nowych danych, aby uniknąć
+ *    referencji do nieistniejącego tematu.
+ *
+ * Walidacja:
+ *  - Loading state: jeśli `!props.data || !props.data.knowledgeBase`, pokazuje
+ *    komunikat "Ładowanie bazy wiedzy...".
  *
  * Renderowanie:
  *  - Lewy panel: przyciski reprezentujące spis treści. Kliknięcie ustawia
  *    `selectedTopic`.
- *  - Główna zawartość: znajduje obiekt `selectedItem` z `props.baza` i dzieli
+ *  - Tytuł: pobiera tekst z `props.data.textUI.knowledgeBase.title`.
+ *  - Główna zawartość: znajduje `selectedItem` w `props.data.knowledgeBase` i dzieli
  *    `selectedItem.content` na linie używając `'/n'` jako separatora, tworząc
  *    akapity (`<p>`).
  */

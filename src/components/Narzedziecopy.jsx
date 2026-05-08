@@ -5,50 +5,75 @@ import { BsArrowReturnLeft, BsCaretDown, BsArrowDownLeft } from "react-icons/bs"
 const GRANICE_PUNKTOWE = [100, 150]
 // INDEX 0 - granica średniego zużycia
 // INDEX 1 - granica krytycznego zużycia
-// <<<------------------------------------------------------------------------------------------------------------------------------------------
 
 /*
- * Dokumentacja komponentu NarzedzieCopy
+ * Dokumentacja komponentu NarzedzieCopy (ZAKTUALIZOWANA)
  * ------------------------------------
  * Opis:
  *  - Komponent interaktywny do oceny stanu technicznego ŚOI (środków ochrony
  *    indywidualnej). Pozwala wybrać narzędzie/środek, przejść przez kategorie
- *    symptomów, zaznaczyć występowanie symptomów i określić ich nasilenie
- *    (multiplier). Po zakończeniu oblicza sumę punktów i zwraca wynik.
+ *    symptomów, zaznaczyć występowanie symptomów, określić nasilenie (multiplier)
+ *    za pomocą suwaka. Po zakończeniu oblicza sumę punktów i zwraca wynik.
+ *    Obsługuje dynamiczną zmianę języka (zmianę props.data) poprzez mapowanie
+ *    indeksów między starą a nową strukturą JSON.
  *
  * Props:
- *  - `data` : obiekt zawierający co najmniej klucz `conditionTool` i `textUI`.
- *    - `data.conditionTool` powinno być obiektem w strukturze:
+ *  - `data` : obiekt zawierający:
+ *    - `data.conditionTool` : struktura multi-level:
  *        { "Kategoria": { "Nazwa narzędzia": { "Nazwa kategorii": { symptoms: { "Nazwa symptomu": { points, information, hasRange } } } } } }
- *    - `data.textUI` : mapowanie wyników ('d','s','k') na { title, text } używane w komunikacie końcowym.
+ *    - `data.textUI` : mapowanie wyników ('d','s','k') na { title, text } dla modalu wyniku
+ *    - `data.knowledgeBase` : walidowana przy renderu
  *
  * Stałe:
- *  - `GRANICE_PUNKTOWE` : tablica progów punktowych [granica_srednia, granica_krytyczna].
+ *  - `GRANICE_PUNKTOWE` : [100, 150] - progi punktów dla wyników [średni, krytyczny]
  *
  * Stany (główne):
- *  - `uncoveredH3` : aktualnie rozwinięta sekcja w lewym menu.
- *  - `toolPath` : string reprezentujący wybraną ścieżkę w formacie 'mainKey;-;toolKey;-;catKey;-;symptomKey'.
- *  - `categs` : liczba kategorii wybranego narzędzia.
- *  - `openedCategs` : lista kategorii, które użytkownik już otworzył/przejrzał.
- *  - `testPoints` : obiekt przechowujący punkty i multiplier dla każdego symptomu, przykładowo { categoryKey: { symptomKey: { points, multiplier } } }.
- *  - `endOfTest` : boolean wskazujący czy wszystkie kategorie zostały przejrzane.
- *  - `showSubmit` : boolean - czy pokazać modal z wynikiem.
- *  - `result` : 'd'|'s'|'k' oznaczające dobry/średni/krytyczny wynik.
+ *  - `uncoveredH3` : klucz aktualnie rozwinięte sekcji w lewym menu
+ *  - `toolPath` : string 'mainKey;-;toolKey;-;catKey;-;symptomKey' reprezentujący wybraną ścieżkę
+ *  - `categs` : liczba kategorii wybranego narzędzia
+ *  - `openedCategs` : lista kategorii, które użytkownik otworzył/przejrzał
+ *  - `testPoints` : { categoryKey: { symptomKey: { points, multiplier } } } — przechowuje dane do obliczenia wyniku
+ *  - `endOfTest` : czy wszystkie kategorie zostały przejrzane
+ *  - `showSubmit` : czy pokazać modal z wynikiem
+ *  - `result` : 'd'|'s'|'k' — wynik oceny (dobry/średni/krytyczny)
  *
  * Zmienne pomocnicze:
- *  - `pathParts`, `mainKey`, `toolKey`, `currentCatKey`, `symptomKey` - rozbicie `toolPath`.
- *  - `isSymptomView` : true gdy wyświetlany jest widok pojedynczego symptomu.
- *  - `symptomData`, `currentPointState`, `allCategories`, `currentCatSymptoms` itp. - wygenerowane na podstawie `toolData` i `toolPath`.
+ *  - `pathParts`, `mainKey`, `toolKey`, `currentCatKey`, `symptomKey` : rozbicie `toolPath`
+ *  - `isSymptomView`, `isToolSelected` : flagi stanu
+ *  - `symptomData`, `currentPointState`, `allCategories`, `currentCatSymptoms` itp. : wygenerowane z `toolData` i `toolPath`
+ *  - `isLastCategory`, `isLastSymptom` : flagi dla UI (zmiana tekstu przycisku "Dalej" na "Zakończ badanie")
  *
- * Główne funkcje:
- *  - `useEffect` (inicjalizacja `testPoints`) : przy zmianie `toolPath` tworzy strukturę `initialPoints` dla wybranego narzędzia i ustawia `testPoints` jeśli jest to nowy wybór.
- *  - `handleNext()` : przechodzi do następnego symptomu lub następnej kategorii; na końcu przywraca widok wyboru narzędzia.
- *  - `handleSubmit()` : sumuje `points * multiplier` z `testPoints` i ustawia `result` według `GRANICE_PUNKTOWE`, a następnie pokazuje `showSubmit`.
+ * Refs:
+ *  - `prevDataRef` : przechowuje referencję do poprzedniego `data` obiektu. Używana do detekcji
+ *    zmian w props.data (np. zmiana języka) i mapowania starych indeksów na nowe w `toolPath`.
  *
- * UI (krótko):
- *  - Lewy panel: lista kategorii i narzędzi; po wybraniu narzędzia pokazuje listę kategorii i symptomów (z klasą `checked` jeśli multiplier>0).
- *  - Prawy panel: opis symptomu, checkbox do zaznaczenia symptomu (ustawia multiplier na 1/0) i opcjonalny suwak gdy `hasRange`.
- *  - Przyciski nawigacyjne: 'Dalej' / 'Zakończ badanie' oraz 'Sprawdź stan techniczny' po przejrzeniu wszystkich kategorii.
+ * Główne efekty/funkcje:
+ *  - `useEffect` (mapowanie danych przy zmianie JSON) : gdy `data` się zmieni, mapuje stare
+ *    indeksy (`mainKey`, `toolKey`, `currentCatKey`, `symptomKey`) na nowe klucze w nowej
+ *    strukturze JSON. Zachowuje wartości multiplierów symptomów oraz stan `openedCategs`.
+ *    Jeśli indeks nie istnieje w nowej strukturze, resetuje ścieżkę bezpiecznie.
+ *  - `useEffect` (inicjalizacja `testPoints`) : przy zmianie `toolPath` tworzy strukturę
+ *    `initialPoints` dla wybranego narzędzia, ale tylko jeśli struktura się zmieniła
+ *    (porównanie długości `prevKeys` i `categoryKeys`).
+ *  - `useEffect` (end of test) : ustawia `endOfTest` gdy liczba otwartych kategorii
+ *    równa się total kategorii.
+ *  - `handleNext()` : przechodzi do następnego symptomu, następnej kategorii, lub kończy test.
+ *  - `handleSubmit()` : sumuje `points * multiplier` dla wszystkich symptomów, porównuje
+ *    z `GRANICE_PUNKTOWE`, ustawia `result` i `showSubmit = true`.
+ *
+ * UI (struktura):
+ *  - Lewy panel: 
+ *    - Jeśli !isToolSelected: lista głównych kategorii i narzędzi
+ *    - Jeśli isToolSelected: lista kategorii ze statusem (klasa "read" jeśli przejrzana)
+ *      i symptomów (klasa "checked" jeśli multiplier>0, "bold" jeśli aktualny)
+ *    - Przycisk "Sprawdź stan techniczny" (aktywny gdy all categs opened)
+ *  - Prawy panel:
+ *    - Jeśli isSymptomView: opis symptomu, checkbox (zaznaczenie = multiplier 1), opcjonalny suwak "Nasilenie"
+ *    - Inny widok: komunikaty instrukcji lub informacja o końcu testu
+ *  - Modal wyniku (jeśli showSubmit): tytuł i opis wyniku (dane z data.textUI[result])
+ *
+ * Walidacja:
+ *  - Loading: jeśli !data || !data.knowledgeBase, pokazuje "Ładowanie bazy wiedzy..."
  */
 
 function NarzedzieCopy({data}) {
