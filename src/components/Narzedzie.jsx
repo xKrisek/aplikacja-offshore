@@ -5,6 +5,68 @@ import { useState, useEffect } from 'react';
 import './bazaWiedzy.css';
 import kask from '../assets/kask.png';
 
+/*
+ * Dokumentacja komponentu Narzedzie
+ * ---------------------------------
+ * Opis:
+ *  - `Narzedzie` to komponent obsługujący nawigację po kategoriach
+ *    środków ochrony, wyświetlanie list symptomów, przyjmowanie wyborów
+ *    (checkboxy, suwaki) i obliczanie wyniku oceny technicznej na podstawie
+ *    sumy punktów.
+ *
+ * Props:
+ *  - `props.data` : obiekt wielopoziomowy o strukturze:
+ *      {
+ *        "Kategoria": {
+ *          "Podkategoria": {
+ *            "Sekcja": {
+ *              "symptoms": {
+ *                "Nazwa symptomu": { points: number, information: string },
+ *                ...
+ *              }
+ *            }
+ *          }
+ *        }
+ *      }
+ *    Funkcja komponentu polega na iterowaniu `Object.entries(props.data)` i
+ *    tworzeniu ścieżek (slug) za pomocą `toLink()`.
+ *
+ * Stany (główne):
+ *  - `criteria1/2/3` : aktualnie wyświetlany opis kryterium (string lub null).
+ *  - `showResult` : boolean - czy pokazać modal z wynikiem.
+ *  - `currentSOI` : string - aktualnie wybrany środek ochrony.
+ *  - `pointsSum` : number - suma punktów z zaznaczonych checkboxów.
+ *  - `valuePoint` : number - wartość suwaka (1..10) używana przy niektórych kryteriach.
+ *  - `path`, `arrayPath`, `textPath` : zarządzanie slugami i tekstowym opisem ścieżki.
+ *  - `criteriasDone` : powinno być tablicą numerów rozdziałów (np. []), a nie stringiem.
+ *
+ * Funkcje pomocnicze:
+ *  - `toLink(str)` : tworzy slug z nazwy (usuwa diakrytykę i znaki specjalne).
+ *  - `handleCheckboxChange(checked, points)` : dodaje/odejmuje `points` od `pointsSum`.
+ *  - `checkAllConditionHandler()` : waliduje, czy oznaczono wszystkie wymagane
+ *     sekcje (`criteriasDone`) i ustawia `showResult` lub pokazuje alert.
+ *
+ * Kluczowe uwagi i potencjalne błędy do naprawienia:
+ *  - `criteriasDone` jest inicjalizowane jako string `""`, a potem używane jak
+ *    tablica (metoda `.includes` i rozpakowywane z `...prevCriteriaDone`).
+ *    Należy zainicjalizować `useState([])` aby uniknąć błędów.
+ *  - W wywołaniach `setCriteriasDone((prevCriteriaDone) => [...prevCriteriaDone, N])`
+ *    jest używana nazwa `prevCriteriaDone`, ale parametr wewnętrzny to `prev` —
+ *    należy zachować spójność (np. `setCriteriasDone(prev => [...prev, N])`).
+ *  - W modalu wynikowym wywoływana jest `setSelectedSymptoms(new Set())`, lecz
+ *    `setSelectedSymptoms` nie jest zdefiniowane w tym komponencie — to prawdopodobny bug.
+ *  - Mieszane importy `react-router` i `react-router-dom` mogą być mylące. Zazwyczaj
+ *    `Routes`, `Route`, `NavLink` pochodzą z `react-router-dom` w aplikacjach web.
+ *  - `useEffect` aktualizuje `textPath` odwołując się do starej wartości `textPath`.
+ *    Jeśli zamierzamy dopisywać segmenty, rozważ użycie funkcji aktualizującej
+ *    `setTextPath(prev => ...)` lub dodanie `textPath` do dependency array.
+ *
+ * Sugerowane poprawki:
+ *  - Zainicjalizować `criteriasDone` jako `useState([])`.
+ *  - Usunąć/naprawić `setSelectedSymptoms` lub zadeklarować go jeśli potrzebny.
+ *  - Ujednolicić importy routera (najczęściej `react-router-dom`).
+ */
+
 function Narzedzie(props) {
 
     const color_unchecked = 'white';

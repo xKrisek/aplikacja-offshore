@@ -7,6 +7,50 @@ const GRANICE_PUNKTOWE = [100, 150]
 // INDEX 1 - granica krytycznego zużycia
 // <<<------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
+ * Dokumentacja komponentu NarzedzieCopy
+ * ------------------------------------
+ * Opis:
+ *  - Komponent interaktywny do oceny stanu technicznego ŚOI (środków ochrony
+ *    indywidualnej). Pozwala wybrać narzędzie/środek, przejść przez kategorie
+ *    symptomów, zaznaczyć występowanie symptomów i określić ich nasilenie
+ *    (multiplier). Po zakończeniu oblicza sumę punktów i zwraca wynik.
+ *
+ * Props:
+ *  - `data` : obiekt zawierający co najmniej klucz `conditionTool` i `textUI`.
+ *    - `data.conditionTool` powinno być obiektem w strukturze:
+ *        { "Kategoria": { "Nazwa narzędzia": { "Nazwa kategorii": { symptoms: { "Nazwa symptomu": { points, information, hasRange } } } } } }
+ *    - `data.textUI` : mapowanie wyników ('d','s','k') na { title, text } używane w komunikacie końcowym.
+ *
+ * Stałe:
+ *  - `GRANICE_PUNKTOWE` : tablica progów punktowych [granica_srednia, granica_krytyczna].
+ *
+ * Stany (główne):
+ *  - `uncoveredH3` : aktualnie rozwinięta sekcja w lewym menu.
+ *  - `toolPath` : string reprezentujący wybraną ścieżkę w formacie 'mainKey;-;toolKey;-;catKey;-;symptomKey'.
+ *  - `categs` : liczba kategorii wybranego narzędzia.
+ *  - `openedCategs` : lista kategorii, które użytkownik już otworzył/przejrzał.
+ *  - `testPoints` : obiekt przechowujący punkty i multiplier dla każdego symptomu, przykładowo { categoryKey: { symptomKey: { points, multiplier } } }.
+ *  - `endOfTest` : boolean wskazujący czy wszystkie kategorie zostały przejrzane.
+ *  - `showSubmit` : boolean - czy pokazać modal z wynikiem.
+ *  - `result` : 'd'|'s'|'k' oznaczające dobry/średni/krytyczny wynik.
+ *
+ * Zmienne pomocnicze:
+ *  - `pathParts`, `mainKey`, `toolKey`, `currentCatKey`, `symptomKey` - rozbicie `toolPath`.
+ *  - `isSymptomView` : true gdy wyświetlany jest widok pojedynczego symptomu.
+ *  - `symptomData`, `currentPointState`, `allCategories`, `currentCatSymptoms` itp. - wygenerowane na podstawie `toolData` i `toolPath`.
+ *
+ * Główne funkcje:
+ *  - `useEffect` (inicjalizacja `testPoints`) : przy zmianie `toolPath` tworzy strukturę `initialPoints` dla wybranego narzędzia i ustawia `testPoints` jeśli jest to nowy wybór.
+ *  - `handleNext()` : przechodzi do następnego symptomu lub następnej kategorii; na końcu przywraca widok wyboru narzędzia.
+ *  - `handleSubmit()` : sumuje `points * multiplier` z `testPoints` i ustawia `result` według `GRANICE_PUNKTOWE`, a następnie pokazuje `showSubmit`.
+ *
+ * UI (krótko):
+ *  - Lewy panel: lista kategorii i narzędzi; po wybraniu narzędzia pokazuje listę kategorii i symptomów (z klasą `checked` jeśli multiplier>0).
+ *  - Prawy panel: opis symptomu, checkbox do zaznaczenia symptomu (ustawia multiplier na 1/0) i opcjonalny suwak gdy `hasRange`.
+ *  - Przyciski nawigacyjne: 'Dalej' / 'Zakończ badanie' oraz 'Sprawdź stan techniczny' po przejrzeniu wszystkich kategorii.
+ */
+
 function NarzedzieCopy({data}) {
     const toolData = data["conditionTool"];
     const [uncoveredH3, setUncoveredH3] = useState("");

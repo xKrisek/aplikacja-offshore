@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/aplikacja-offshore/',
   server: {
     host: true,
-    port: 2137,
+    port: 5137,
     strictPort: true,
   }
 })

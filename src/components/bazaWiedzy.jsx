@@ -2,6 +2,31 @@ import { useState } from 'react'
 import './bazaWiedzy.css'
 
 
+/*
+ * Dokumentacja komponentu `BazaWiedzy`
+ * -----------------------------------
+ * Opis:
+ *  - Komponent wyświetla spis treści oraz szczegóły wybranego tematu z
+ *    przekazanej listy `props.baza`.
+ *
+ * Props:
+ *  - `props.baza` : Array<{ title: string, content: string }>
+ *      Lista obiektów reprezentujących tematy. Każdy element powinien zawierać
+ *      `title` (tekst tytułu) i `content` (tekstowy opis).
+ *
+ * Lokalne zmienne / stany:
+ *  - `topics` : Array<string> — wygenerowana lista tytułów z `props.baza`.
+ *  - `selectedTopic`, `setSelectedTopic` : wybrany temat. Domyślnie pierwszy
+ *      tytuł z listy lub `'WSTĘP'` gdy brak danych.
+ *
+ * Renderowanie:
+ *  - Lewy panel: przyciski reprezentujące spis treści. Kliknięcie ustawia
+ *    `selectedTopic`.
+ *  - Główna zawartość: znajduje obiekt `selectedItem` z `props.baza` i dzieli
+ *    `selectedItem.content` na linie używając `'/n'` jako separatora, tworząc
+ *    akapity (`<p>`).
+ */
+
 function BazaWiedzy(props) {
     
     const topics = props.baza.map(item => item.title);

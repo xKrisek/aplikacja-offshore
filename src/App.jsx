@@ -20,6 +20,29 @@ import { BsChevronCompactLeft } from "react-icons/bs";
 
 function App() {
 
+  /*
+   * Dokumentacja pliku App.jsx
+   * ---------------------------------
+   * Opis:
+   *  - Główny komponent aplikacji React renderujący nagłówek, nawigację,
+   *    kontrolkę wyboru języka (react-select), główną zawartość (Routes)
+   *    oraz stopkę.
+   *
+   * Główne elementy:
+   *  - `languageOptions` (tablica): dostępne języki w formacie
+   *      { value: string, label: string, icon: string }
+   *    Używana jako `options` dla komponentu `Select`.
+   *
+   *  - Stan `showLang`: boolean sterujący widocznością dropdownu języków.
+   *
+   *  - `IconOption(props)` i `IconValue(props)`: drobne komponenty pomocnicze
+   *    z `react-select` pozwalające renderować ikonę obok etykiety opcji
+   *    (używane jako `components` w `Select`).
+   *
+   *  - Import `data` z `./assets/data.json`: zawiera dane aplikacji i jest
+   *    przekazywany jako props do `BazaWiedzy`, `Narzedzie` oraz
+   *    `NarzedzieCopy`.
+   */
   const languageOptions = [
     {value: 'PL', label: 'Polski', icon: polandFlag},
     {value: 'EN', label: 'English', icon: britainFlag},
