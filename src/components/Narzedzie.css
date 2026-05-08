@@ -88,7 +88,8 @@ tr {
 
 .menu h3{
     background-color: #ddd;
-    width: 90%;
+    width: 70%;
+    padding: 0 10%;
     margin: 2rem auto 0;
     line-height: 2.5rem;
     border-radius: 1rem 1rem 0 0;
@@ -331,19 +332,20 @@ tr {
     color: white;
 }
 
-.rotated-arrow{
-    transform: scale(1, -1);
-}
-
 .uncover-arrow{
     float: right;
     font-size: 1.5rem;
     stroke-width: 1px;
     right: 1rem;
-    top: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
     position: absolute;
     z-index: 3;
+}
+
+.rotated-arrow{
+    transform: scale(1, -1) translateY(50%);
 }
 
 .return-arrow{
@@ -430,12 +432,13 @@ tr {
 }
 
 #symptom-range{
-    width: 40%;
+    --track-pad: 0.2rem;
+    --thumb-wid: 0.8rem;
+    width: calc(40% + 2rem);
     position: absolute;
     bottom: 2rem;
     left: 6.6%;
     background-color: #78afbd;
-    padding: 1rem;
     border-radius: 1rem;
     z-index: 1;
     opacity: 0;
@@ -444,9 +447,10 @@ tr {
 
 .range-wrapper {
     position: relative;
-    width: 100%;
+    max-width: calc(100% - 2rem);
     display: flex;
     align-items: center;
+    margin: 0 1rem 1rem 1rem;
 }
 
 #symptom-range input[type="range"] {
@@ -467,7 +471,7 @@ tr {
   background-color: #ffffff55;
   border-radius: 0.5rem;
   height: 1.2rem;
-  padding: 0.2rem;
+  padding: var(--track-pad);
   width: 100%;
 }
 
@@ -477,7 +481,7 @@ tr {
   background-color: white;
   border-radius: 0.5rem;
   height: 0.8rem;
-  width: 0.8rem;
+  width: var(--thumb-wid);
   transition: all 0.1s ease-in-out;
 }
 
@@ -497,17 +501,22 @@ tr {
     margin-bottom: 0.5rem;
     line-height: 1rem;
     font-weight: bold;
+    margin-top: 1rem;
 }
 
 .range-bubble {
     position: absolute;
     top: -1.8rem;
-    left: calc(0.6rem + (var(--range-pos) * 0.91));
+    left: calc(
+        var(--track-pad) + 
+        (var(--thumb-wid) / 2) + 
+        (100% - (var(--track-pad) * 2) - var(--thumb-wid)) * (var(--range-val) / 9)
+    );
     transform: translateX(-50%);
     transition: none;
     background: rgb(230, calc(230 * calc(1 - var(--green-color))), 100);
     color: black;
-    padding: 2px 8px;
+    min-width: 1.3rem;
     border-radius: 1rem;
     font-size: 14px;
     font-weight: bold;
@@ -519,7 +528,7 @@ tr {
 .range-bubble::after {
     content: "";
     position: absolute;
-    bottom: -6px;
+    bottom: -5.5px;
     left: 50%;
     transform: translateX(-50%);
     border-left: 0.5rem solid transparent;
@@ -612,6 +621,9 @@ input[type="checkbox"]:checked::after {
     background-color: #eee;
     text-align: center;
     border-radius: 2rem;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .wynik_koncowy_black {
@@ -623,4 +635,5 @@ input[type="checkbox"]:checked::after {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
